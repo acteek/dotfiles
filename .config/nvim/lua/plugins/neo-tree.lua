@@ -16,7 +16,12 @@ return {
         filtered_items = {
           visible = true,
         },
+        follow_current_file = {
+          enabled = true,
+          leave_dirs_open = false,
+        },
       },
+      buffers = { follow_current_file = { enable = true } },
       default_component_configs = {
         indent = {
           with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
@@ -41,7 +46,7 @@ return {
         },
       },
     })
-    vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", {})
+    vim.keymap.set("n", "<C-n>", ":Neotree focus<CR>", {})
     local events = require("neo-tree.events")
     events.fire_event(events.GIT_EVENT)
   end,
