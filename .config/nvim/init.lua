@@ -93,7 +93,6 @@ vim.lsp.enable('tsls')
 
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Go to reference" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "Code format" })
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Code Rename" })
@@ -178,6 +177,7 @@ require("lazy").setup({
         },
       })
       local builtin = require("telescope.builtin")
+      vim.keymap.set("n", "<leader>gr", builtin.lsp_references, { desc = "Go to definition" })
       vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
       vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
