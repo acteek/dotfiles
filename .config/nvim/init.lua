@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
 })
 
 
--- LSP's setup 
+-- LSP's setup
 vim.lsp.config['gopls'] = {
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -117,6 +117,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
+  {
+    'goolord/alpha-nvim',
+    config = function()
+      require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
+    end
+  },
   {
     "williamboman/mason.nvim",
     lazy = false,
@@ -294,6 +300,26 @@ require("lazy").setup({
           },
         },
       })
+    end,
+  },
+  {
+    'stevearc/oil.nvim',
+    config = function()
+      require('oil').setup({
+        default_file_explorer = true,
+        win_options = {
+          wrap = true,
+        },
+        skip_confirm_for_simple_edits = true,
+        view_options = {
+          show_hidden = true,
+          is_always_hidden = function(name)
+            return name == '.git' or name == '..'
+          end,
+        },
+      })
+
+      vim.keymap.set('n', '-', '<cmd>Oil<cr>', { desc = 'Oil: Open file in browser' })
     end,
   },
 })
