@@ -39,7 +39,7 @@ vim.diagnostic.config({
 
 -- clear Cmd after command
 vim.api.nvim_create_autocmd("CmdlineLeave", {
-  group = “someGroup”,
+  group = vim.api.nvim_create_augroup('cleanUp', {}),
   callback = function()
     vim.fn.timer_start(500, function()
       vim.cmd [[ echon ' ' ]]
@@ -47,8 +47,35 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
   end
 })
 
+--
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('myLSP', {}),
+  callback = function(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    local telescope = require("telescope.builtin")
+    -- Go to lsp mapping
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
+    vim.keymap.set("n", "gr", telescope.lsp_references, { desc = "Go to definition" })
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+    vim.keymap.set("n", "gi", telescope.lsp_implementations, { desc = "Go to implementation" })
+    --  Code lsp mapping
+    vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { desc = "Code action" })
+    vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code format" })
+    vim.keymap.set("n", "cr", vim.lsp.buf.rename, { desc = "Code Rename" })
 
--- LSP's setup
+    if client:supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('myLSP', { clear = false }),
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+        end,
+      })
+    end
+  end,
+})
+
+-- LSPs setup
 vim.lsp.config['gopls'] = {
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -90,15 +117,10 @@ vim.lsp.enable('luals')
 vim.lsp.enable('gopls')
 vim.lsp.enable('tsls')
 
-
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { desc = "Code action" })
-vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code format" })
-vim.keymap.set("n", "cr", vim.lsp.buf.rename, { desc = "Code Rename" })
-
+-- Clenup highlight
 vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>')
 
+-- Ability to move lines up and down
 vim.keymap.set("n", "<C-j>", ":m +1<CR>", {})
 vim.keymap.set("n", "<C-k>", ":m -2<CR>", {})
 
@@ -168,14 +190,29 @@ require("lazy").setup({
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "natecraddock/telescope-zf-native.nvim",
+    },
     config = function()
+      local telescope = require('telescope')
       require("telescope").setup({
         defaults = {
           file_ignore_patterns = {
             "node_modules",
             "dist",
             "coverage",
+          },
+        },
+        pickers = {
+          buffers = {
+            sort_mru = true,
+            sort_lastused = true,
+            mappings = {
+              i = {
+                ["<c-d>"] = "delete_buffer"
+              },
+            },
           },
         },
         extensions = {
@@ -185,13 +222,13 @@ require("lazy").setup({
         },
       })
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Go to definition" })
       vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
       vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, {})
 
-      require("telescope").load_extension("ui-select")
+      telescope.load_extension("ui-select")
+      telescope.load_extension('zf-native')
     end,
   },
   {
