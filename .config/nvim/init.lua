@@ -92,10 +92,10 @@ vim.lsp.enable('tsls')
 
 
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
-vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "Code format" })
-vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Code Rename" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { desc = "Code action" })
+vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code format" })
+vim.keymap.set("n", "cr", vim.lsp.buf.rename, { desc = "Code Rename" })
 
 vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>')
 
@@ -120,7 +120,9 @@ require("lazy").setup({
   {
     'goolord/alpha-nvim',
     config = function()
-      require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
+      local alpha = require("alpha")
+      local dashboard = require("alpha.themes.startify")
+      alpha.setup(dashboard.opts)
     end
   },
   {
@@ -183,7 +185,7 @@ require("lazy").setup({
         },
       })
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>gr", builtin.lsp_references, { desc = "Go to definition" })
+      vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Go to definition" })
       vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
       vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
