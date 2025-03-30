@@ -22,12 +22,12 @@ vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 
 -- languages for spell checking
-vim.opt.spelllang = { 'en', 'ru' }
+vim.opt.spelllang = { "en", "ru" }
 
 -- lang map
 vim.opt.langmap = {
-  'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-  'фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz',
+  "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  "фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
 }
 
 -- Diagnostics setup
@@ -39,17 +39,17 @@ vim.diagnostic.config({
 
 -- clear Cmd after command
 vim.api.nvim_create_autocmd("CmdlineLeave", {
-  group = vim.api.nvim_create_augroup('cleanUp', {}),
+  group = vim.api.nvim_create_augroup("cleanUp", {}),
   callback = function()
     vim.fn.timer_start(500, function()
-      vim.cmd [[ echon ' ' ]]
+      vim.cmd([[ echon ' ' ]])
     end)
-  end
+  end,
 })
 
 --
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('myLSP', {}),
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("myLSP", {}),
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local telescope = require("telescope.builtin")
@@ -63,9 +63,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code format" })
     vim.keymap.set("n", "cr", vim.lsp.buf.rename, { desc = "Code Rename" })
 
-    if client:supports_method('textDocument/formatting') then
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        group = vim.api.nvim_create_augroup('myLSP', { clear = false }),
+    if client:supports_method("textDocument/formatting") then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = vim.api.nvim_create_augroup("myLSP", { clear = false }),
         buffer = args.buf,
         callback = function()
           vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
@@ -76,7 +76,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- LSPs setup
-vim.lsp.config['gopls'] = {
+vim.lsp.config["gopls"] = {
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_markers = { "go.work", "go.mod", ".git" },
@@ -91,39 +91,38 @@ vim.lsp.config['gopls'] = {
   },
 }
 
-vim.lsp.config['tsls'] = {
+vim.lsp.config["tsls"] = {
   cmd = { "typescript-language-server", "--stdio" },
   filetypes = { "typescript" },
   root_markers = { "tsconfig.json", "package.json" },
   settings = {},
 }
 
-vim.lsp.config['luals'] = {
-  cmd = { 'lua-language-server' },
-  filetypes = { 'lua' },
+vim.lsp.config["luals"] = {
+  cmd = { "lua-language-server" },
+  filetypes = { "lua" },
   settings = {
     Lua = {
       diagnostics = {
-        globals = { 'vim' },
+        globals = { "vim" },
       },
       runtime = {
-        version = 'LuaJIT',
-      }
-    }
-  }
+        version = "LuaJIT",
+      },
+    },
+  },
 }
 
-vim.lsp.enable('luals')
-vim.lsp.enable('gopls')
-vim.lsp.enable('tsls')
+vim.lsp.enable("luals")
+vim.lsp.enable("gopls")
+vim.lsp.enable("tsls")
 
 -- Clenup highlight
-vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>')
+vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
 
 -- Ability to move lines up and down
 vim.keymap.set("n", "<C-j>", ":m +1<CR>", {})
 vim.keymap.set("n", "<C-k>", ":m -2<CR>", {})
-
 
 -- Plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -140,12 +139,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   {
-    'goolord/alpha-nvim',
+    "goolord/alpha-nvim",
     config = function()
       local alpha = require("alpha")
       local dashboard = require("alpha.themes.startify")
       alpha.setup(dashboard.opts)
-    end
+    end,
   },
   {
     "williamboman/mason.nvim",
@@ -193,7 +192,7 @@ require("lazy").setup({
       "nvim-telescope/telescope-ui-select.nvim",
     },
     config = function()
-      local telescope = require('telescope')
+      local telescope = require("telescope")
       require("telescope").setup({
         defaults = {
           file_ignore_patterns = {
@@ -208,7 +207,7 @@ require("lazy").setup({
             sort_lastused = true,
             mappings = {
               i = {
-                ["<c-d>"] = "delete_buffer"
+                ["<c-d>"] = "delete_buffer",
               },
             },
           },
@@ -226,7 +225,7 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, {})
 
       telescope.load_extension("ui-select")
-      telescope.load_extension('zf-native')
+      telescope.load_extension("zf-native")
     end,
   },
   {
@@ -297,52 +296,54 @@ require("lazy").setup({
     end,
   },
   {
-    'lewis6991/gitsigns.nvim',
-    event = 'VeryLazy',
+    "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
     opts = {
       current_line_blame = true,
-      current_line_blame_formatter = ' <author>, <author_time:%d/%m/%Y> - <summary>',
+      current_line_blame_formatter = " <author>, <author_time:%d/%m/%Y> - <summary>",
       on_attach = function(bufnr)
-        local gitsigns = require('gitsigns')
+        local gitsigns = require("gitsigns")
 
         local function map(l, r, desc)
-          vim.keymap.set('n', l, r, { buffer = bufnr, desc = 'Gitsigns: ' .. desc })
+          vim.keymap.set("n", l, r, { buffer = bufnr, desc = "Gitsigns: " .. desc })
         end
 
-        map('<leader>ph', gitsigns.preview_hunk, 'Preview hunk')
-        map('<leader>rh', gitsigns.reset_hunk, 'Reset hunk')
-        map('<leader>lb', function() gitsigns.blame_line({ full = true }) end, 'Blame line')
-        map(']h', gitsigns.next_hunk, 'Next hunk')
-        map('[h', gitsigns.prev_hunk, 'Prev hunk')
+        map("<leader>ph", gitsigns.preview_hunk, "Preview hunk")
+        map("<leader>rh", gitsigns.reset_hunk, "Reset hunk")
+        map("<leader>lb", function()
+          gitsigns.blame_line({ full = true })
+        end, "Blame line")
+        map("]h", gitsigns.next_hunk, "Next hunk")
+        map("[h", gitsigns.prev_hunk, "Prev hunk")
       end,
       worktrees = {
         {
           toplevel = vim.env.HOME,
-          gitdir = vim.env.HOME .. '/.dotfiles'
-        }
-      }
+          gitdir = vim.env.HOME .. "/.dotfiles",
+        },
+      },
     },
   },
   {
-    'linrongbin16/gitlinker.nvim',
-    cmd = 'GitLink',
+    "linrongbin16/gitlinker.nvim",
+    cmd = "GitLink",
     config = function()
-      require('gitlinker').setup({
+      require("gitlinker").setup({
         router = {
           browse = {
-            ["^git%.ringcentral%.com"] = require('gitlinker.routers').gitlab_browse,
+            ["^git%.ringcentral%.com"] = require("gitlinker.routers").gitlab_browse,
           },
           blame = {
-            ["^git%.ringcentral%.com"] = require('gitlinker.routers').gitlab_blame,
+            ["^git%.ringcentral%.com"] = require("gitlinker.routers").gitlab_blame,
           },
         },
       })
     end,
   },
   {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     config = function()
-      require('oil').setup({
+      require("oil").setup({
         default_file_explorer = true,
         win_options = {
           wrap = true,
@@ -351,12 +352,44 @@ require("lazy").setup({
         view_options = {
           show_hidden = true,
           is_always_hidden = function(name)
-            return name == '.git' or name == '..'
+            return name == ".git" or name == ".."
           end,
         },
       })
 
-      vim.keymap.set('n', '-', '<cmd>Oil<cr>', { desc = 'Oil: Open file in browser' })
+      vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Oil: Open file in browser" })
+    end,
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.gofumpt,
+          null_ls.builtins.formatting.goimports_reviser,
+          null_ls.builtins.formatting.golines,
+        },
+
+        on_attach = function(client, bufnr)
+          if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({
+              group = augroup,
+              buffer = bufnr,
+            })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              group = augroup,
+              buffer = bufnr,
+              callback = function()
+                vim.lsp.buf.format({ bufnr = bufnr })
+              end,
+            })
+          end
+        end,
+      })
     end,
   },
 })
