@@ -372,6 +372,7 @@ require("lazy").setup({
 					null_ls.builtins.formatting.gofmt,
 					null_ls.builtins.formatting.goimports_reviser,
 					null_ls.builtins.formatting.golines,
+					null_ls.builtins.diagnostics.yamllint,
 				},
 				on_attach = function(client, bufnr)
 					if client.supports_method("textDocument/formatting") then
@@ -388,6 +389,38 @@ require("lazy").setup({
 							end,
 						})
 					end
+				end,
+			})
+		end,
+	},
+	{
+		"scalameta/nvim-metals",
+		dependencies = {
+			"hrsh7th/nvim-cmp",
+			"hrsh7th/cmp-nvim-lsp",
+		},
+		ft = { "scala", "sbt", "java" },
+		opts = function()
+			local metals_config = require("metals").bare_config()
+			metals_config.init_options.statusBarProvider = "on"
+			metals_config.settings = {
+				showImplicitArguments = true,
+				showImplicitConversionsAndClasses = true,
+				showInferredType = true,
+			}
+			metals_config.on_attach = function(client, _bufnr)
+				-- metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+				metals_config.capabilities = client.server_capabilities
+			end
+			return metals_config
+		end,
+		config = function(self, metals_config)
+			local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = self.ft,
+				group = nvim_metals_group,
+				callback = function()
+					require("metals").initialize_or_attach(metals_config)
 				end,
 			})
 		end,
