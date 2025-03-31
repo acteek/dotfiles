@@ -124,6 +124,11 @@ vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
 vim.keymap.set("n", "<C-j>", ":m +1<CR>", { desc = "Move line down" })
 vim.keymap.set("n", "<C-k>", ":m -2<CR>", { desc = "Move line up" })
 
+-- Quickfix list navigate
+vim.keymap.set("n", "m", ":cnext<CR>", { desc = "Next line in QF list" })
+vim.keymap.set("n", "M", ":cprev<CR>", { desc = "Prev line in QF list " })
+vim.keymap.set("n", "<leader>mm", ":cclose<CR>", { desc = "Close QF list" })
+
 -- Plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -372,7 +377,7 @@ require("lazy").setup({
 					null_ls.builtins.formatting.gofmt,
 					null_ls.builtins.formatting.goimports_reviser,
 					null_ls.builtins.formatting.golines,
-					null_ls.builtins.diagnostics.yamllint,
+					null_ls.builtins.diagnostics.eslint,
 				},
 				on_attach = function(client, bufnr)
 					if client.supports_method("textDocument/formatting") then
@@ -423,6 +428,12 @@ require("lazy").setup({
 					require("metals").initialize_or_attach(metals_config)
 				end,
 			})
+		end,
+	},
+	{
+		"yorickpeterse/nvim-pqf",
+		config = function()
+			require("pqf").setup()
 		end,
 	},
 })

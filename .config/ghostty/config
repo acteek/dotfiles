@@ -1,10 +1,12 @@
 
 font-size = 14
-font-family = JetBrains Mono
-#font-family = Fira Code
+
+font-family = Fira Code
+font-style = Retina
 
 mouse-hide-while-typing = true
 
+theme = Relaxed
 
 background-opacity = 0.96
 background-blur-radius = 40
