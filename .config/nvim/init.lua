@@ -7,6 +7,7 @@ vim.opt.swapfile = false
 -- line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
 -- break lines at word boundaries
 vim.opt.linebreak = true
@@ -21,14 +22,14 @@ vim.opt.softtabstop = 2
 -- number of spaces used for <tab>
 vim.opt.tabstop = 2
 
--- languages for spell checking
-vim.opt.spelllang = { "en", "ru" }
-
--- lang map
+-- language map
 vim.opt.langmap = {
 	"ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ",
 	"фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
 }
+
+vim.opt.completeopt = { "menuone", "noinsert" }
+vim.opt.shortmess:append("c")
 
 -- Diagnostics setup
 vim.diagnostic.config({
