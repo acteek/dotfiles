@@ -28,8 +28,18 @@ vim.opt.langmap = {
 	"фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
 }
 
-vim.opt.completeopt = { "menuone", "noinsert" }
-vim.opt.shortmess:append("c")
+-- insert mode completion
+vim.opt.completeopt = {
+	"menuone", -- show menu even for single match
+	"noinsert", -- do not insert automatically
+	"noselect", -- do not select automatically
+}
+
+-- command line completion
+vim.opt.wildmode = {
+	"longest:full",
+	"full",
+}
 
 -- Diagnostics setup
 vim.diagnostic.config({
@@ -291,16 +301,17 @@ require("lazy").setup({
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
+					["<C-d>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<c-n>"] = cmp.mapping.select_next_item(),
+					["<c-p>"] = cmp.mapping.select_prev_item(),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "luasnip" }, -- For luasnip users.
-				}, {
+					{ name = "luasnip" },
 					{ name = "buffer" },
 				}),
 			})
