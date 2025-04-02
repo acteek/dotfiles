@@ -99,6 +99,13 @@ vim.lsp.config["tsls"] = {
 	settings = {},
 }
 
+vim.lsp.config["protols"] = {
+	cmd = { "protols", "-i", "proto,protobuf" },
+	filetypes = { "proto" },
+	root_markers = { "proto", "protobuf" },
+	settings = {},
+}
+
 vim.lsp.config["luals"] = {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
@@ -114,9 +121,7 @@ vim.lsp.config["luals"] = {
 	},
 }
 
-vim.lsp.enable("luals")
-vim.lsp.enable("gopls")
-vim.lsp.enable("tsls")
+vim.lsp.enable({ "luals", "gopls", "tsls", "protols" })
 
 -- Clenup highlight
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
@@ -368,6 +373,9 @@ require("lazy").setup({
 	},
 	{
 		"nvimtools/none-ls.nvim",
+		dependencies = {
+			"nvimtools/none-ls-extras.nvim",
+		},
 		config = function()
 			local null_ls = require("null-ls")
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -378,7 +386,9 @@ require("lazy").setup({
 					null_ls.builtins.formatting.gofmt,
 					null_ls.builtins.formatting.goimports_reviser,
 					null_ls.builtins.formatting.golines,
-					null_ls.builtins.diagnostics.eslint,
+					null_ls.builtins.formatting.buf,
+					null_ls.builtins.diagnostics.eslint_d,
+					null_ls.builtins.diagnostics.buf,
 				},
 				on_attach = function(client, bufnr)
 					if client.supports_method("textDocument/formatting") then
