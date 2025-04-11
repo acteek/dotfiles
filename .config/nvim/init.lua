@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Go to lsp mapping
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
 		vim.keymap.set("n", "gr", telescope.lsp_references, { desc = "Go to definition" })
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+		vim.keymap.set("n", "gd", telescope.lsp_definitions, { desc = "Go to definition" })
 		vim.keymap.set("n", "gi", telescope.lsp_implementations, { desc = "Go to implementation" })
 		--  Code lsp mapping
 		vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { desc = "Code action" })
@@ -169,10 +169,12 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{
 		"goolord/alpha-nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			local alpha = require("alpha")
 			local dashboard = require("alpha.themes.startify")
-			alpha.setup(dashboard.opts)
+			dashboard.file_icons.provider = "devicons"
+			alpha.setup(dashboard.config)
 		end,
 	},
 	{
@@ -248,10 +250,10 @@ require("lazy").setup({
 				},
 			})
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+			vim.keymap.set("n", "<leader>bb", builtin.buffers, {})
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 			vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
-			vim.keymap.set("n", "<leader><leader>", builtin.buffers, {})
+			vim.keymap.set("n", "<leader><leader>", builtin.find_files, {})
 
 			telescope.load_extension("ui-select")
 			telescope.load_extension("zf-native")
