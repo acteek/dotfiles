@@ -168,10 +168,11 @@ vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
 vim.keymap.set("n", "<C-j>", ":m +1<CR>", { desc = "Move line down" })
 vim.keymap.set("n", "<C-k>", ":m -2<CR>", { desc = "Move line up" })
 
--- Quickfix list navigate
-vim.keymap.set("n", "m", ":cnext<CR>", { desc = "Next line in QF list" })
-vim.keymap.set("n", "M", ":cprev<CR>", { desc = "Prev line in QF list " })
-vim.keymap.set("n", "<leader>mm", ":cclose<CR>", { desc = "Close QF list" })
+-- Registery copy/paste
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy to CP" })
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from CP" })
+vim.keymap.set("v", "d", '"_d', { desc = "Delete to separate RG" })
+vim.keymap.set("n", "dd", '"_dd', { desc = "Delete to separate RG" })
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
