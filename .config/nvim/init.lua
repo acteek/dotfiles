@@ -136,7 +136,30 @@ vim.lsp.config["luals"] = {
 	},
 }
 
-vim.lsp.enable({ "luals", "gopls", "tsls", "protols" })
+vim.lsp.config["pyls"] = {
+	cmd = { "pyright-langserver", "--stdio" },
+	filetypes = { "python" },
+	root_markers = {
+		"pyproject.toml",
+		"setup.py",
+		"setup.cfg",
+		"requirements.txt",
+		"Pipfile",
+		"pyrightconfig.json",
+		".git",
+	},
+	settings = {
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				useLibraryCodeForTypes = true,
+				diagnosticMode = "openFilesOnly",
+			},
+		},
+	},
+}
+
+vim.lsp.enable({ "luals", "gopls", "tsls", "protols", "pyls" })
 
 -- Clenup highlight
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
@@ -408,6 +431,7 @@ require("lazy").setup({
 					null_ls.builtins.formatting.goimports_reviser,
 					null_ls.builtins.formatting.golines,
 					null_ls.builtins.formatting.buf,
+					null_ls.builtins.formatting.black,
 					null_ls.builtins.diagnostics.buf,
 				},
 				on_attach = function(client, bufnr)
