@@ -199,47 +199,19 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"L3MON4D3/LuaSnip",
-		dependencies = {
-			"saadparwaiz1/cmp_luasnip",
-			"rafamadriz/friendly-snippets",
-		},
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-		},
-		config = function()
-			local cmp = require("cmp")
-			require("luasnip.loaders.from_vscode").lazy_load()
-
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
-					end,
+		"saghen/blink.cmp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		version = "1.*",
+		opts = {
+			-- See :h blink-cmp-config-keymap for defining your own keymap
+			keymap = { preset = "enter" },
+			completion = {
+				documentation = { auto_show = true, auto_show_delay_ms = 0 },
+				list = {
+					selection = { preselect = true, auto_insert = false },
 				},
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
-				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-d>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<c-n>"] = cmp.mapping.select_next_item(),
-					["<c-p>"] = cmp.mapping.select_prev_item(),
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
-				}),
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-					{ name = "buffer" },
-				}),
-			})
-		end,
+			},
+		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -323,7 +295,6 @@ require("lazy").setup({
 					null_ls.builtins.formatting.golines,
 					null_ls.builtins.formatting.buf,
 					null_ls.builtins.formatting.black,
-					null_ls.builtins.diagnostics.buf,
 				},
 				on_attach = function(client, bufnr)
 					if client.supports_method("textDocument/formatting") then
