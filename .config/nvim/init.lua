@@ -1,46 +1,29 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.background = "dark"
-
 vim.opt.swapfile = false
-
--- line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
-
--- break lines at word boundaries
 vim.opt.linebreak = true
-
--- use spaces instead of tabs
 vim.opt.expandtab = true
-
--- number of spaces for identation
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
-
--- number of spaces used for <tab>
 vim.opt.tabstop = 2
-
 vim.opt.scrolloff = 8
-
--- Enable break indent
 vim.opt.breakindent = true
 
--- language map
 vim.opt.langmap = {
 	"ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ",
 	"фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
 }
 
--- insert mode completion
 vim.opt.completeopt = {
 	"menuone", -- show menu even for single match
 	"noinsert", -- do not insert automatically
 	"noselect", -- do not select automatically
 }
 
--- command line completion
+vim.opt.winborder = "rounded"
 vim.opt.wildmode = {
 	"longest:full",
 	"full",
@@ -53,77 +36,10 @@ vim.diagnostic.config({
 	},
 })
 
--- clear Cmd after command
-vim.api.nvim_create_autocmd("CmdlineLeave", {
-	group = vim.api.nvim_create_augroup("cleanUp", {}),
-	callback = function()
-		vim.fn.timer_start(500, function()
-			vim.cmd([[ echon ' ' ]])
-		end)
-	end,
-})
-
---
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("myLSP", {}),
-	callback = function(args)
-		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-		local telescope = require("telescope.builtin")
-		-- Go to lsp mapping
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
-		vim.keymap.set("n", "gr", telescope.lsp_references, { desc = "Go to definition" })
-		vim.keymap.set("n", "gd", telescope.lsp_definitions, { desc = "Go to definition" })
-		vim.keymap.set("n", "gi", telescope.lsp_implementations, { desc = "Go to implementation" })
-		--  Code lsp mapping
-		vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { desc = "Code action" })
-		vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code format" })
-		vim.keymap.set("n", "cr", vim.lsp.buf.rename, { desc = "Code Rename" })
-
-		-- if client:supports_method("textDocument/formatting") then
-		--   vim.api.nvim_create_autocmd("BufWritePre", {
-		--     group = vim.api.nvim_create_augroup("myLSP", { clear = false }),
-		--     buffer = args.buf,
-		--     callback = function()
-		--       vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-		--     end,
-		--   })
-		-- end
-	end,
-})
-
--- LSPs setup
-vim.lsp.config["gopls"] = {
-	cmd = { "gopls" },
-	filetypes = { "go", "gomod", "gowork", "gotmpl" },
-	root_markers = { "go.work", "go.mod", ".git" },
-	settings = {
-		gopls = {
-			completeUnimported = true,
-			usePlaceholders = true,
-			analyses = {
-				unusedparams = true,
-			},
-		},
-	},
-}
-
-vim.lsp.config["tsls"] = {
-	cmd = { "typescript-language-server", "--stdio" },
-	filetypes = { "typescript" },
-	root_markers = { "tsconfig.json", "package.json" },
-	settings = {},
-}
-
-vim.lsp.config["protols"] = {
-	cmd = { "protols", "-i", "proto,protobuf" },
-	filetypes = { "proto" },
-	root_markers = { "proto", "protobuf" },
-	settings = {},
-}
-
-vim.lsp.config["luals"] = {
-	cmd = { "lua-language-server" },
-	filetypes = { "lua" },
+-- LSP setup
+-- Extend LSP configs for nvim-lspconfig plugin
+vim.lsp.config("lua_ls", {
+	root_markers = { "lazy-lock.json" },
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -134,48 +50,28 @@ vim.lsp.config["luals"] = {
 			},
 		},
 	},
-}
+})
 
-vim.lsp.config["pyls"] = {
-	cmd = { "pyright-langserver", "--stdio" },
-	filetypes = { "python" },
-	root_markers = {
-		"pyproject.toml",
-		"setup.py",
-		"setup.cfg",
-		"requirements.txt",
-		"Pipfile",
-		"pyrightconfig.json",
-		".git",
-	},
-	settings = {
-		python = {
-			analysis = {
-				autoSearchPaths = true,
-				useLibraryCodeForTypes = true,
-				diagnosticMode = "openFilesOnly",
-			},
-		},
-	},
-}
+vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "protols", "pyright" })
 
-vim.lsp.enable({ "luals", "gopls", "tsls", "protols", "pyls" })
-
--- Clenup highlight
-vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
-
--- Ability to move lines up and down
+-- LSP go to
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to definition" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+--  LSP code actions
+vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { desc = "Code action" })
+vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code format" })
+vim.keymap.set("n", "cr", vim.lsp.buf.rename, { desc = "Code Rename" })
+-- Moving and searching
 vim.keymap.set("n", "<C-j>", ":m +1<CR>", { desc = "Move line down" })
 vim.keymap.set("n", "<C-k>", ":m -2<CR>", { desc = "Move line up" })
-
--- Registery copy/paste
-vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy to CP" })
-vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from CP" })
-vim.keymap.set("v", "d", '"_d', { desc = "Delete to separate RG" })
-vim.keymap.set("n", "dd", '"_dd', { desc = "Delete to separate RG" })
-
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
+-- Other keymaps
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to CP" })
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from CP" })
+vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "Clear highlight" })
 
 -- Plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -185,12 +81,13 @@ if not vim.loop.fs_stat(lazypath) then
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		"--branch=stable",
 		lazypath,
 	})
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
+	{ "neovim/nvim-lspconfig" },
 	{
 		"goolord/alpha-nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -224,6 +121,7 @@ require("lazy").setup({
 			local onedark = require("onedark")
 			onedark.setup({
 				style = "dark",
+				transparent = false,
 			})
 			onedark.load()
 		end,
@@ -244,7 +142,6 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"natecraddock/telescope-zf-native.nvim",
-			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		config = function()
 			local telescope = require("telescope")
@@ -267,11 +164,6 @@ require("lazy").setup({
 						},
 					},
 				},
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
-				},
 			})
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>bb", builtin.buffers, {})
@@ -279,7 +171,6 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
 			vim.keymap.set("n", "<leader><leader>", builtin.find_files, {})
 
-			telescope.load_extension("ui-select")
 			telescope.load_extension("zf-native")
 		end,
 	},
@@ -307,10 +198,6 @@ require("lazy").setup({
 			}
 		end,
 	},
-
-	{
-		"hrsh7th/cmp-nvim-lsp",
-	},
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = {
@@ -320,6 +207,9 @@ require("lazy").setup({
 	},
 	{
 		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+		},
 		config = function()
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
@@ -456,10 +346,6 @@ require("lazy").setup({
 	},
 	{
 		"scalameta/nvim-metals",
-		dependencies = {
-			"hrsh7th/nvim-cmp",
-			"hrsh7th/cmp-nvim-lsp",
-		},
 		ft = { "scala", "sbt", "java" },
 		opts = function()
 			local metals_config = require("metals").bare_config()
@@ -469,11 +355,6 @@ require("lazy").setup({
 				showImplicitConversionsAndClasses = true,
 				showInferredType = true,
 			}
-			metals_config.on_attach = function(client, _bufnr)
-				-- metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
-				metals_config.capabilities = client.server_capabilities
-			end
-			return metals_config
 		end,
 		config = function(self, metals_config)
 			local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
