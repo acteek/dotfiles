@@ -52,7 +52,7 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
-vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "protols", "pyright" })
+vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "protols", "pyright", "yamlls" })
 
 -- LSP go to
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
