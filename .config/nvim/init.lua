@@ -11,6 +11,7 @@ vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 vim.opt.scrolloff = 8
 vim.opt.breakindent = true
+vim.opt.ignorecase = true
 
 vim.opt.langmap = {
 	"ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -72,6 +73,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to CP" })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from CP" })
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "Clear highlight" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist, { desc = "Open diagnostics as qf list" })
 
 -- Plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
