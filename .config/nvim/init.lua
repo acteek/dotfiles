@@ -12,6 +12,7 @@ vim.opt.tabstop = 2
 vim.opt.scrolloff = 8
 vim.opt.breakindent = true
 vim.opt.ignorecase = true
+vim.opt.showmode = false
 
 vim.opt.langmap = {
 	"ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -130,10 +131,11 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("lualine").setup({
 				options = {
-					theme = "dracula",
+					theme = "onedark",
 				},
 			})
 		end,
@@ -144,6 +146,7 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"natecraddock/telescope-zf-native.nvim",
+			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		config = function()
 			local telescope = require("telescope")
@@ -159,6 +162,7 @@ require("lazy").setup({
 					buffers = {
 						sort_mru = true,
 						sort_lastused = true,
+						show_all_buffers = true,
 						mappings = {
 							i = {
 								["<c-d>"] = "delete_buffer",
@@ -166,14 +170,24 @@ require("lazy").setup({
 						},
 					},
 				},
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({}),
+					},
+				},
 			})
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>bb", builtin.buffers, {})
+			vim.keymap.set("n", "<leader>b", builtin.buffers, {})
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 			vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
+			vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols, {})
+			vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
+			vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, {})
+			vim.keymap.set("n", "<leader>gg", builtin.git_branches, {})
 			vim.keymap.set("n", "<leader><leader>", builtin.find_files, {})
 
 			telescope.load_extension("zf-native")
+			telescope.load_extension("ui-select")
 		end,
 	},
 	{
@@ -341,9 +355,8 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"yorickpeterse/nvim-pqf",
-		config = function()
-			require("pqf").setup()
-		end,
+		"stevearc/quicker.nvim",
+		event = "FileType qf",
+		opts = {},
 	},
 })
