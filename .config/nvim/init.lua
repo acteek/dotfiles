@@ -359,4 +359,21 @@ require("lazy").setup({
 		event = "FileType qf",
 		opts = {},
 	},
+	{
+		"numToStr/FTerm.nvim",
+
+		config = function()
+			local fterm = require("FTerm")
+			fterm.setup({
+				dimensions = {
+					height = 0.7,
+					width = 0.7,
+				},
+				blend = 25,
+			})
+
+			vim.keymap.set("n", "<leader>t", fterm.toggle, { desc = "Toggle terminal" })
+			vim.keymap.set("t", "<esc>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+		end,
+	},
 })
