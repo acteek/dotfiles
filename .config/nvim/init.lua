@@ -71,10 +71,9 @@ vim.keymap.set("n", "<C-k>", "<cmd>m -2<cr>", { desc = "Move line up" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
 -- Other keymaps
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to Clipboard" })
-vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste to Clipboard" })
-vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "Clear highlight" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist, { desc = "Open diagnostics as qf list" })
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy to Clipboard" })
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste to Clipboard" })
+vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear highlight" })
 
 -- Plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -389,7 +388,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>T", "<cmd>YarnTest<cr>")
 			vim.keymap.set("n", "<leader>t", fterm.open)
 			-- vim.keymap.set("n", "<leader>t", "<cmd>vsp<cr><C-w>l<cmd>term<cr>i")
-			vim.keymap.set({ "t", "n" }, "<esc>", "<C-\\><C-n><cmd>FTermClose<cr>")
+			vim.keymap.set("t", "<esc>", "<C-\\><C-n><cmd>FTermClose<cr>")
 		end,
 	},
 })
