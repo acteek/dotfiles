@@ -11,8 +11,21 @@ vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 vim.opt.scrolloff = 8
 vim.opt.breakindent = true
-vim.opt.ignorecase = true
 vim.opt.showmode = false
+
+vim.opt.ignorecase = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.clipboard:append("unnamedplus") -- Use system clipboard
+vim.opt.iskeyword:append("-") -- Treat dash as part of a word
+vim.opt.undofile = true -- Persistent undo
+vim.opt.autoread = true -- Auto-reload file if changed outside
+vim.opt.foldmethod = "expr" -- Use expression for folding
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter for folding
+vim.opt.foldlevel = 99 -- Keep all folds open by default
+vim.opt.splitbelow = true -- Horizontal splits open below
+vim.opt.splitright = true -- Vertical splits open to the right
 
 vim.opt.langmap = {
 	"ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -36,6 +49,20 @@ vim.diagnostic.config({
 	virtual_lines = {
 		current_line = true,
 	},
+})
+
+-- Auto cmds
+-- Highlight the yanked text for 200ms
+local highlight_yank_group = vim.api.nvim_create_augroup("HighlightYank", {})
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = highlight_yank_group,
+	pattern = "*",
+	callback = function()
+		vim.hl.on_yank({
+			higroup = "IncSearch",
+			timeout = 200,
+		})
+	end,
 })
 
 -- LSP setup
@@ -70,10 +97,13 @@ vim.keymap.set("n", "<C-j>", "<cmd>m +1<cr>", { desc = "Move line down" })
 vim.keymap.set("n", "<C-k>", "<cmd>m -2<cr>", { desc = "Move line up" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 -- Other keymaps
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy to Clipboard" })
 vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste to Clipboard" })
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear highlight" })
+vim.keymap.set("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 
 -- Plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -89,6 +119,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
+	install = { colorscheme = { "onedark" } },
+	checker = { enabled = true },
 	{ "neovim/nvim-lspconfig" },
 	{
 		"goolord/alpha-nvim",
@@ -195,6 +227,19 @@ require("lazy").setup({
 		config = function()
 			local config = require("nvim-treesitter.configs")
 			config.setup({
+				textobjects = {
+					select = {
+						enable = true,
+						lookahead = true,
+						keymaps = {
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ac"] = "@class.outer",
+							["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+							["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+						},
+					},
+				},
 				sync_install = false,
 				ensure_installed = {},
 				ignore_install = {},
@@ -204,6 +249,11 @@ require("lazy").setup({
 				indent = { enable = true },
 			})
 		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+		requires = "nvim-treesitter/nvim-treesitter",
 	},
 	{
 		"github/copilot.vim",
