@@ -71,6 +71,13 @@ vim.lsp.config("lua_ls", {
 	root_markers = { "lazy-lock.json" },
 	settings = {
 		Lua = {
+			workspace = {
+				library = {
+					"${3rd}/love2d/library",
+					vim.fn.expand("$VIMRUNTIME/lua"),
+					vim.fn.stdpath("config") .. "/lua",
+				},
+			},
 			diagnostics = {
 				globals = { "vim" },
 			},
