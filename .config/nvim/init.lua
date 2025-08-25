@@ -441,4 +441,11 @@ require("lazy").setup({
 			vim.keymap.set("t", "<esc>", "<C-\\><C-n><cmd>FTermClose<cr>")
 		end,
 	},
+	{
+		"mbbill/undotree",
+
+		config = function()
+			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+		end,
+	},
 })
