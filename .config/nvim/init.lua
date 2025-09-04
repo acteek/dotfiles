@@ -95,10 +95,11 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to definition" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+vim.keymap.set("n", "gs", vim.lsp.buf.document_symbol, { desc = "Go document symbol" })
 --  LSP code actions
-vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { desc = "Code action" })
+vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { desc = "Code action" })
+vim.keymap.set("n", "gcr", vim.lsp.buf.rename, { desc = "Code Rename" })
 vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code format" })
-vim.keymap.set("n", "cr", vim.lsp.buf.rename, { desc = "Code Rename" })
 -- Moving and searching
 vim.keymap.set("n", "<C-j>", "<cmd>m +1<cr>", { desc = "Move line down" })
 vim.keymap.set("n", "<C-k>", "<cmd>m -2<cr>", { desc = "Move line up" })
