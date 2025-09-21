@@ -92,7 +92,7 @@ vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "protols", "pyright", "yamlls" })
 
 -- LSP go to
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
-vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to definition" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
 vim.keymap.set("n", "gs", vim.lsp.buf.document_symbol, { desc = "Go document symbol" })
@@ -108,10 +108,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 -- Other keymaps
-vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy to Clipboard" })
-vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste to Clipboard" })
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear highlight" })
 vim.keymap.set("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
+vim.keymap.set("n", "<leader>q", "<cmd>cclose<cr>", { desc = "Close Quick list" })
 
 -- Plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
