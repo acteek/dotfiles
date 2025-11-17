@@ -90,13 +90,8 @@ vim.lsp.config("lua_ls", {
 
 vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "protols", "pyright", "yamlls" })
 
--- LSP go to
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
-vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
-vim.keymap.set("n", "gs", vim.lsp.buf.document_symbol, { desc = "Go document symbol" })
 --  LSP code actions
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
 vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { desc = "Code action" })
 vim.keymap.set("n", "gcr", vim.lsp.buf.rename, { desc = "Code Rename" })
 vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code format" })
@@ -180,7 +175,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
+		tag = "v0.1.9",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"natecraddock/telescope-zf-native.nvim",
@@ -215,10 +210,13 @@ require("lazy").setup({
 				},
 			})
 			local builtin = require("telescope.builtin")
+			vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "Go to references" })
+			vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Go to definition" })
+			vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Go to implementation" })
+			vim.keymap.set("n", "gs", builtin.lsp_document_symbols, { desc = "Go document symbol" })
 			vim.keymap.set("n", "<leader>b", builtin.buffers, {})
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 			vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
-			vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols, {})
 			vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
 			vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, {})
 			vim.keymap.set("n", "<leader>gg", builtin.git_branches, {})
