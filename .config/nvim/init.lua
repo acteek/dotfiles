@@ -121,43 +121,33 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Treesitter
 vim.pack.add({
-	{ src = "git@github.com:nvim-treesitter/nvim-treesitter.git", branch = "main", build = ":TSUpdate" },
-	{ src = "git@github.com:nvim-treesitter/nvim-treesitter-textobjects.git", after = "nvim-treesitter" },
+	{
+		src = "git@github.com:nvim-treesitter/nvim-treesitter.git",
+		branch = "main",
+		build = ":TSUpdate",
+	},
 })
 
-local treesitterConfig = require("nvim-treesitter.configs")
-local treesitter = require("nvim-treesitter")
+local config = require("nvim-treesitter.configs")
 
 vim.treesitter.language.register("typescript", { "ts" })
-treesitterConfig.setup({
-	textobjects = {
-		select = {
-			enable = true,
-			lookahead = true,
-			keymaps = {
-				["af"] = "@function.outer",
-				["if"] = "@function.inner",
-				["ac"] = "@class.outer",
-				["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-				["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
-			},
+vim.treesitter.language.register("python", { "py" })
+vim.treesitter.language.register("go", { "go" })
+vim.treesitter.language.register("yaml", { "yaml", "yml" })
+
+config.setup({
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			node_incremental = "v",
+			node_decremental = "V",
 		},
 	},
 	sync_install = false,
-	ensure_installed = {},
-	ignore_install = {},
-	modules = {},
 	auto_install = true,
 	highlight = { enable = true },
 	indent = { enable = true },
 })
--- 		end,
--- 	},
--- 	{
--- 		"nvim-treesitter/nvim-treesitter-textobjects",
--- 		after = "nvim-treesitter",
--- 		requires = "nvim-treesitter/nvim-treesitter",
--- 	},
 
 -- Colorscheme
 vim.pack.add({

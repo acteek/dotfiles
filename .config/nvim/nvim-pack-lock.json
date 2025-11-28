@@ -93,6 +93,10 @@
       "rev": "f0caedf064aa8c926325d7fe64c141d29b8e7853",
       "src": "git@github.com:nvim-telescope/telescope.nvim.git"
     },
+    "treesitter-modules.nvim": {
+      "rev": "feda026577576014e4627204309faab3c814e378",
+      "src": "git@github.com:MeanderingProgrammer/treesitter-modules.nvim.git"
+    },
     "undotree": {
       "rev": "0f1c9816975b5d7f87d5003a19c53c6fd2ff6f7f",
       "src": "git@github.com:mbbill/undotree.git"
