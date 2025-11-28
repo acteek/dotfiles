@@ -2,7 +2,7 @@
   "plugins": {
     "alpha-nvim": {
       "rev": "3979b01cb05734331c7873049001d3f2bb8477f4",
-      "src": "https://github.com/goolord/alpha-nvim"
+      "src": "git@github.com:goolord/alpha-nvim.git"
     },
     "blink.cmp": {
       "rev": "b19413d214068f316c78978b08264ed1c41830ec",
@@ -25,10 +25,6 @@
       "rev": "5813e4878748805f1518cee7abb50fd7205a3a48",
       "src": "git@github.com:lewis6991/gitsigns.nvim.git"
     },
-    "lualine": {
-      "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
-      "src": "git@github.com:nvim-lualine/lualine.nvim.git"
-    },
     "lualine.nvim": {
       "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
       "src": "git@github.com:nvim-lualine/lualine.nvim.git"
@@ -45,10 +41,6 @@
       "rev": "70659cc3d38151424298ab46b0f67f2251cef231",
       "src": "git@github.com:nvimtools/none-ls-extras.nvim.git"
     },
-    "none-ls.nvim": {
-      "rev": "1917c86818b5e058f53c2ea0ad38fc57534d62fc",
-      "src": "git@github.com:nvimtools/none-ls.nvim.git"
-    },
     "null-ls": {
       "rev": "1917c86818b5e058f53c2ea0ad38fc57534d62fc",
       "src": "git@github.com:nvimtools/none-ls.nvim.git"
@@ -57,13 +49,13 @@
       "rev": "07f4e93de92e8d4ea7ab99602e3a8c9ac0fb778a",
       "src": "git@github.com:neovim/nvim-lspconfig.git"
     },
+    "nvim-metals": {
+      "rev": "40f7b9ea6ded898319136f4d6a94da9487584309",
+      "src": "git@github.com:scalameta/nvim-metals.git"
+    },
     "nvim-treesitter": {
       "rev": "42fc28ba918343ebfd5565147a42a26580579482",
       "src": "git@github.com:nvim-treesitter/nvim-treesitter.git"
-    },
-    "nvim-treesitter-textobjects": {
-      "rev": "5ca4aaa6efdcc59be46b95a3e876300cfead05ef",
-      "src": "git@github.com:nvim-treesitter/nvim-treesitter-textobjects.git"
     },
     "nvim-web-devicons": {
       "rev": "8dcb311b0c92d460fac00eac706abd43d94d68af",
@@ -92,10 +84,6 @@
     "telescope.nvim": {
       "rev": "f0caedf064aa8c926325d7fe64c141d29b8e7853",
       "src": "git@github.com:nvim-telescope/telescope.nvim.git"
-    },
-    "treesitter-modules.nvim": {
-      "rev": "feda026577576014e4627204309faab3c814e378",
-      "src": "git@github.com:MeanderingProgrammer/treesitter-modules.nvim.git"
     },
     "undotree": {
       "rev": "0f1c9816975b5d7f87d5003a19c53c6fd2ff6f7f",
