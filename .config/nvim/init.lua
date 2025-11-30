@@ -22,7 +22,6 @@ vim.opt.iskeyword:append("-") -- Treat dash as part of a word
 vim.opt.undofile = true -- Persistent undo
 vim.opt.autoread = true -- Auto-reload file if changed outside
 vim.opt.foldmethod = "expr" -- Use expression for folding
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter for folding
 vim.opt.foldlevel = 99 -- Keep all folds open by default
 vim.opt.splitbelow = true -- Horizontal splits open below
 vim.opt.splitright = true -- Vertical splits open to the right
@@ -108,6 +107,9 @@ vim.keymap.set("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc =
 vim.keymap.set("n", "<leader>q", "<cmd>cclose<cr>", { desc = "Close Quick list" })
 
 -- Plugins configuration
+vim.keymap.set("n", "<leader>pu", function()
+	vim.pack.update(nil, { force = true })
+end, { desc = "Update plugins" })
 
 -- Common
 vim.pack.add({
@@ -121,19 +123,24 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Treesitter
 vim.pack.add({
-	{
-		src = "git@github.com:nvim-treesitter/nvim-treesitter.git",
-		branch = "main",
-	},
+	{ src = "git@github.com:nvim-treesitter/nvim-treesitter.git", version = "main" },
+	{ src = "git@github.com:MeanderingProgrammer/treesitter-modules.nvim.git" },
 })
 
-vim.treesitter.language.register("typescript", { "ts" })
-vim.treesitter.language.register("python", { "py" })
-vim.treesitter.language.register("go", { "go" })
-vim.treesitter.language.register("yaml", { "yaml", "yml" })
+-- local parsers = { "typescript", "javascript", "python", "go", "yaml", "java", "scala", "sbt", "json" }
 
-local config = require("nvim-treesitter.configs")
-config.setup({
+-- require("nvim-treesitter").install(parsers)
+
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = parsers,
+-- 	callback = function()
+-- 		vim.treesitter.start()
+-- 	end,
+-- })
+
+require("treesitter-modules").setup({
 	incremental_selection = {
 		enable = true,
 		keymaps = {
@@ -141,8 +148,10 @@ config.setup({
 			node_decremental = "V",
 		},
 	},
-	sync_install = false,
 	auto_install = true,
+	fold = {
+		enable = true,
+	},
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false,
@@ -192,7 +201,7 @@ require("mason").setup()
 
 -- Telescope
 vim.pack.add({
-	{ src = "git@github.com:nvim-telescope/telescope.nvim.git", tag = "v0.1.9" },
+	{ src = "git@github.com:nvim-telescope/telescope.nvim.git", version = vim.version.range("^0.2") },
 	{ src = "git@github.com:natecraddock/telescope-zf-native.nvim.git" },
 	{ src = "git@github.com:nvim-telescope/telescope-ui-select.nvim.git" },
 })
