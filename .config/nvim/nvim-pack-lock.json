@@ -1,0 +1,99 @@
+{
+  "plugins": {
+    "alpha-nvim": {
+      "rev": "3979b01cb05734331c7873049001d3f2bb8477f4",
+      "src": "git@github.com:goolord/alpha-nvim.git"
+    },
+    "blink.cmp": {
+      "rev": "b19413d214068f316c78978b08264ed1c41830ec",
+      "src": "git@github.com:saghen/blink.cmp.git",
+      "version": "1.0.0 - 2.0.0"
+    },
+    "copilot.vim": {
+      "rev": "f89e977c87180519ba3b942200e3d05b17b1e2fc",
+      "src": "git@github.com:github/copilot.vim.git"
+    },
+    "friendly-snippets": {
+      "rev": "572f5660cf05f8cd8834e096d7b4c921ba18e175",
+      "src": "git@github.com:rafamadriz/friendly-snippets.git"
+    },
+    "gitlinker.nvim": {
+      "rev": "63cfbb7ba0465fa4a599f57c08c888abb188a595",
+      "src": "git@github.com:linrongbin16/gitlinker.nvim.git"
+    },
+    "gitsigns.nvim": {
+      "rev": "5813e4878748805f1518cee7abb50fd7205a3a48",
+      "src": "git@github.com:lewis6991/gitsigns.nvim.git"
+    },
+    "lualine.nvim": {
+      "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
+      "src": "git@github.com:nvim-lualine/lualine.nvim.git"
+    },
+    "mason-lspconfig.nvim": {
+      "rev": "0b9bb925c000ae649ff7e7149c8cd00031f4b539",
+      "src": "git@github.com:williamboman/mason-lspconfig.nvim.git"
+    },
+    "mason.nvim": {
+      "rev": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800",
+      "src": "git@github.com:williamboman/mason.nvim.git"
+    },
+    "none-ls-extras.nvim": {
+      "rev": "70659cc3d38151424298ab46b0f67f2251cef231",
+      "src": "git@github.com:nvimtools/none-ls-extras.nvim.git"
+    },
+    "null-ls": {
+      "rev": "9a5d95cdf9f440683f248f6f0e97f8643804c91b",
+      "src": "git@github.com:nvimtools/none-ls.nvim.git"
+    },
+    "nvim-lspconfig": {
+      "rev": "effe4bf2e1afb881ea67291c648b68dd3dfc927a",
+      "src": "git@github.com:neovim/nvim-lspconfig.git"
+    },
+    "nvim-metals": {
+      "rev": "40f7b9ea6ded898319136f4d6a94da9487584309",
+      "src": "git@github.com:scalameta/nvim-metals.git"
+    },
+    "nvim-treesitter": {
+      "rev": "00c906abb9550e72bc0c640545b5499b9525bb40",
+      "src": "git@github.com:nvim-treesitter/nvim-treesitter.git",
+      "version": "'main'"
+    },
+    "nvim-web-devicons": {
+      "rev": "8dcb311b0c92d460fac00eac706abd43d94d68af",
+      "src": "git@github.com:nvim-tree/nvim-web-devicons.git"
+    },
+    "oil.nvim": {
+      "rev": "cbcb3f997f6f261c577b943ec94e4ef55108dd95",
+      "src": "git@github.com:stevearc/oil.nvim.git"
+    },
+    "onedark": {
+      "rev": "213c23ae45a04797572242568d5d51937181792d",
+      "src": "git@github.com:navarasu/onedark.nvim.git"
+    },
+    "plenary.nvim": {
+      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      "src": "git@github.com:nvim-lua/plenary.nvim.git"
+    },
+    "telescope-ui-select.nvim": {
+      "rev": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",
+      "src": "git@github.com:nvim-telescope/telescope-ui-select.nvim.git"
+    },
+    "telescope-zf-native.nvim": {
+      "rev": "5721be27df11a19b9cd95e6a4887f16f26599802",
+      "src": "git@github.com:natecraddock/telescope-zf-native.nvim.git"
+    },
+    "telescope.nvim": {
+      "rev": "e69b434b968a33815e2f02a5c7bd7b8dd4c7d4b2",
+      "src": "git@github.com:nvim-telescope/telescope.nvim.git",
+      "version": "0.2.0 - 0.3.0"
+    },
+    "treesitter-modules.nvim": {
+      "rev": "feda026577576014e4627204309faab3c814e378",
+      "src": "git@github.com:MeanderingProgrammer/treesitter-modules.nvim.git"
+    },
+    "undotree": {
+      "rev": "0f1c9816975b5d7f87d5003a19c53c6fd2ff6f7f",
+      "src": "git@github.com:mbbill/undotree.git"
+    }
+  }
+}
