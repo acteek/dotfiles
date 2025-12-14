@@ -38,7 +38,7 @@
       "src": "git@github.com:williamboman/mason.nvim.git"
     },
     "none-ls-extras.nvim": {
-      "rev": "70659cc3d38151424298ab46b0f67f2251cef231",
+      "rev": "03955d165621300965a6d685c8f399ec7efd5785",
       "src": "git@github.com:nvimtools/none-ls-extras.nvim.git"
     },
     "null-ls": {
@@ -46,7 +46,7 @@
       "src": "git@github.com:nvimtools/none-ls.nvim.git"
     },
     "nvim-lspconfig": {
-      "rev": "effe4bf2e1afb881ea67291c648b68dd3dfc927a",
+      "rev": "0044d0987ef7e624d04141d0f90d0481fd3c3663",
       "src": "git@github.com:neovim/nvim-lspconfig.git"
     },
     "nvim-metals": {
@@ -54,7 +54,7 @@
       "src": "git@github.com:scalameta/nvim-metals.git"
     },
     "nvim-treesitter": {
-      "rev": "00c906abb9550e72bc0c640545b5499b9525bb40",
+      "rev": "d3218d988f72ed34414959c9ccd802d393432d6e",
       "src": "git@github.com:nvim-treesitter/nvim-treesitter.git",
       "version": "'main'"
     },
@@ -69,6 +69,10 @@
     "onedark": {
       "rev": "213c23ae45a04797572242568d5d51937181792d",
       "src": "git@github.com:navarasu/onedark.nvim.git"
+    },
+    "pack-manager.nvim": {
+      "rev": "e947437ab03c2e20d7eb4e27d1a5f043a9ab1d72",
+      "src": "git@github.com:mplusp/pack-manager.nvim.git"
     },
     "plenary.nvim": {
       "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",

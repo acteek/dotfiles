@@ -12,7 +12,6 @@ vim.opt.softtabstop = 2
 vim.opt.scrolloff = 8
 vim.opt.breakindent = true
 vim.opt.showmode = false
-
 vim.opt.ignorecase = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -31,11 +30,8 @@ vim.opt.langmap = {
 	"фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
 }
 
-vim.opt.completeopt = {
-	"menuone", -- show menu even for single match
-	"noinsert", -- do not insert automatically
-	"noselect", -- do not select automatically
-}
+vim.opt.autocomplete = false
+vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect", "fuzzy", "popup" }
 
 vim.opt.winborder = "rounded"
 vim.opt.wildmode = {
@@ -107,18 +103,16 @@ vim.keymap.set("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc =
 vim.keymap.set("n", "<leader>q", "<cmd>cclose<cr>", { desc = "Close Quick list" })
 
 -- Plugins configuration
-vim.keymap.set("n", "<leader>pu", function()
-	vim.pack.update(nil, { force = true })
-end, { desc = "Update plugins" })
-
 -- Common
 vim.pack.add({
 	{ src = "git@github.com:nvim-tree/nvim-web-devicons.git" },
 	{ src = "git@github.com:nvim-lua/plenary.nvim.git" },
 	{ src = "git@github.com:neovim/nvim-lspconfig.git" },
 	{ src = "git@github.com:mbbill/undotree.git" },
+	{ src = "git@github.com:mplusp/pack-manager.nvim.git" },
 })
 
+vim.keymap.set("n", "<leader>p", "<cmd>PackMenu<cr>", { desc = "Plugin Maganer" })
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Treesitter
@@ -315,8 +309,21 @@ vim.pack.add({
 require("blink.cmp").setup({
 	-- See :h blink-cmp-config-keymap for defining your own keymap
 	keymap = { preset = "enter" },
+	signature = {
+		enabled = true,
+	},
 	completion = {
-		documentation = { auto_show = true, auto_show_delay_ms = 0 },
+		documentation = { auto_show = true, auto_show_delay_ms = 500 },
+		menu = {
+			auto_show = true,
+			draw = {
+				treesitter = { "lsp" },
+				columns = {
+					{ "kind_icon", "label", "label_description", gap = 1 },
+					{ "source_id" },
+				},
+			},
+		},
 		list = {
 			selection = { preselect = true, auto_insert = false },
 		},
