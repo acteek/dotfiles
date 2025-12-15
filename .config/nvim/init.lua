@@ -369,20 +369,23 @@ require("gitsigns").setup({
 
 -- GitLink
 vim.pack.add({
-	{ src = "git@github.com:linrongbin16/gitlinker.nvim.git" },
+	{ src = "git@github.com:claydugo/browsher.nvim.git" },
 })
 
-require("gitlinker").setup({
-	cmd = "GitLink",
-	router = {
-		browse = {
-			["^git%.ringcentral%.com"] = require("gitlinker.routers").gitlab_browse,
-		},
-		blame = {
-			["^git%.ringcentral%.com"] = require("gitlinker.routers").gitlab_blame,
+require("browsher").setup({
+	allow_line_numbers_with_uncommitted_changes = true,
+	providers = {
+		["git.ringcentral.com"] = {
+			url_template = "%s/-/blob/%s/%s",
+			single_line_format = "#L%d",
+			multi_line_format = "#L%d-%d",
 		},
 	},
 })
+-- Open from the latest commit, the recommended default operation
+vim.keymap.set('n', '<leader>B', '<cmd>Browsher commit<CR>')
+vim.keymap.set('v', '<leader>B', ":'<,'>Browsher commit<CR>gv" )
+
 
 -- Scala metals
 vim.pack.add({

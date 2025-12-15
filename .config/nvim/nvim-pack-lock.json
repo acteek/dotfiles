@@ -9,6 +9,10 @@
       "src": "git@github.com:saghen/blink.cmp.git",
       "version": "1.0.0 - 2.0.0"
     },
+    "browsher.nvim": {
+      "rev": "6d87d5b8b0d178f75ee047a04f11c5b172fa705a",
+      "src": "git@github.com:claydugo/browsher.nvim.git"
+    },
     "copilot.vim": {
       "rev": "f89e977c87180519ba3b942200e3d05b17b1e2fc",
       "src": "git@github.com:github/copilot.vim.git"
@@ -20,10 +24,6 @@
     "friendly-snippets": {
       "rev": "572f5660cf05f8cd8834e096d7b4c921ba18e175",
       "src": "git@github.com:rafamadriz/friendly-snippets.git"
-    },
-    "gitlinker.nvim": {
-      "rev": "63cfbb7ba0465fa4a599f57c08c888abb188a595",
-      "src": "git@github.com:linrongbin16/gitlinker.nvim.git"
     },
     "gitsigns.nvim": {
       "rev": "5813e4878748805f1518cee7abb50fd7205a3a48",
