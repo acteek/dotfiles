@@ -13,6 +13,10 @@
       "rev": "f89e977c87180519ba3b942200e3d05b17b1e2fc",
       "src": "git@github.com:github/copilot.vim.git"
     },
+    "everforest-nvim": {
+      "rev": "557bce922401e247a596583679bc181d4d688554",
+      "src": "git@github.com:neanias/everforest-nvim.git"
+    },
     "friendly-snippets": {
       "rev": "572f5660cf05f8cd8834e096d7b4c921ba18e175",
       "src": "git@github.com:rafamadriz/friendly-snippets.git"
@@ -24,6 +28,10 @@
     "gitsigns.nvim": {
       "rev": "5813e4878748805f1518cee7abb50fd7205a3a48",
       "src": "git@github.com:lewis6991/gitsigns.nvim.git"
+    },
+    "gruvbox.nvim": {
+      "rev": "5e0a460d8e0f7f669c158dedd5f9ae2bcac31437",
+      "src": "git@github.com:ellisonleao/gruvbox.nvim.git"
     },
     "lualine.nvim": {
       "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
@@ -67,6 +75,10 @@
       "src": "git@github.com:stevearc/oil.nvim.git"
     },
     "onedark": {
+      "rev": "213c23ae45a04797572242568d5d51937181792d",
+      "src": "git@github.com:navarasu/onedark.nvim.git"
+    },
+    "onedark.nvim": {
       "rev": "213c23ae45a04797572242568d5d51937181792d",
       "src": "git@github.com:navarasu/onedark.nvim.git"
     },

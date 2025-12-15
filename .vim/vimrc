@@ -3,15 +3,13 @@ set relativenumber
 set cursorline
 syntax on
 filetype plugin indent on
+filetype on
 set re=0
 set mouse=a
-colorscheme habamax
 set wildmenu
 set autoread
 set history=500
-set background=dark
 set so=7
-set ruler
 set cmdheight=1
 set hid
 set ignorecase
@@ -32,14 +30,18 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set laststatus=2
+set ruler
+
+set termguicolors
+let g:everforest_background = 'medium'
+let g:everforest_better_performance = 1
+colorscheme everforest
+set background=dark
 
 set path+=**
 set wildignore+=*/node_modules/*
 set wildignore+=*/dist/*
-set statusline=%f         " Path to the file_
-set statusline+=\ -\      " Separator
-set statusline+=%y        " Filetype of the file
-set completeopt+=longest,menuone,noselect
+set completeopt+=longest,menuone,noselect,popup
 let g:netrw_banner = 0
 
 let mapleader=" "

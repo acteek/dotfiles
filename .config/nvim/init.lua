@@ -155,15 +155,12 @@ require("treesitter-modules").setup({
 
 -- Colorscheme
 vim.pack.add({
-	{ src = "git@github.com:navarasu/onedark.nvim.git", name = "onedark" },
+	{ src = "git@github.com:navarasu/onedark.nvim.git" },
+	{ src = "git@github.com:neanias/everforest-nvim.git" },
+	{ src = "git@github.com:ellisonleao/gruvbox.nvim.git" },
 })
-local onedark = require("onedark")
-onedark.setup({
-	style = "dark",
-	transparent = false,
-})
-onedark.load()
-vim.cmd.colorscheme("onedark")
+
+vim.cmd.colorscheme("everforest")
 
 -- Alpha dashboard
 vim.pack.add({
@@ -182,7 +179,7 @@ vim.pack.add({
 
 require("lualine").setup({
 	options = {
-		theme = "onedark",
+		theme = "auto",
 	},
 })
 
