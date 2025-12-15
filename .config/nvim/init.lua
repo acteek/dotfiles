@@ -383,9 +383,8 @@ require("browsher").setup({
 	},
 })
 -- Open from the latest commit, the recommended default operation
-vim.keymap.set('n', '<leader>B', '<cmd>Browsher commit<CR>')
-vim.keymap.set('v', '<leader>B', ":'<,'>Browsher commit<CR>gv" )
-
+vim.keymap.set("n", "<leader>B", "<cmd>Browsher commit<cr>", { silent = true })
+vim.keymap.set("v", "<leader>B", ":'<,'>Browsher commit<cr>gv", { silent = true })
 
 -- Scala metals
 vim.pack.add({
