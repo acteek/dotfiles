@@ -60,6 +60,27 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- restore cursor to file position in previous editing session
+vim.api.nvim_create_autocmd("BufReadPost", {
+	callback = function(args)
+		local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+		local line_count = vim.api.nvim_buf_line_count(args.buf)
+		if mark[1] > 0 and mark[1] <= line_count then
+			vim.api.nvim_win_set_cursor(0, mark)
+			-- defer centering slightly so it's applied after render
+			vim.schedule(function()
+				vim.cmd("normal! zz")
+			end)
+		end
+	end,
+})
+
+-- open help in vertical split
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "help",
+	command = "wincmd L",
+})
+
 -- LSP setup
 -- Extend LSP configs for nvim-lspconfig plugin
 vim.lsp.config("lua_ls", {
@@ -91,12 +112,16 @@ vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { desc = "Code action" })
 vim.keymap.set("n", "gcr", vim.lsp.buf.rename, { desc = "Code Rename" })
 vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code format" })
 -- Moving and searching
-vim.keymap.set("n", "<C-j>", "<cmd>m +1<cr>", { desc = "Move line down" })
-vim.keymap.set("n", "<C-k>", "<cmd>m -2<cr>", { desc = "Move line up" })
+vim.keymap.set("n", "<M-j>", "<cmd>m +1<cr>", { desc = "Move line down" })
+vim.keymap.set("n", "<M-k>", "<cmd>m -2<cr>", { desc = "Move line up" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
+vim.keymap.set("n", "}", "}zz", { desc = "Move to next paragraph" })
+vim.keymap.set("n", "{", "{zz", { desc = "Move to previous paragraph" })
+vim.keymap.set("i", "<C-h>", "<Left>", { desc = "Move cursor left" })
+vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Move cursor right" })
 -- Other keymaps
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear highlight" })
 vim.keymap.set("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
@@ -178,8 +203,14 @@ vim.pack.add({
 })
 
 require("lualine").setup({
+	sections = {
+		lualine_c = {
+			{ "filename", path = 1 },
+		},
+	},
 	options = {
 		theme = "auto",
+		disabled_filetypes = { "alpha", "dashboard", "oil", "gitsigns-blame" },
 	},
 })
 
@@ -198,8 +229,15 @@ vim.pack.add({
 })
 
 local telescope = require("telescope")
-require("telescope").setup({
+local builtin = require("telescope.builtin")
+
+telescope.setup({
 	defaults = {
+		mappings = {
+			i = {
+				["<esc>"] = "close",
+			},
+		},
 		file_ignore_patterns = {
 			"node_modules",
 			"dist",
@@ -224,7 +262,7 @@ require("telescope").setup({
 		},
 	},
 })
-local builtin = require("telescope.builtin")
+
 vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "Go to references" })
 vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Go to definition" })
 vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Go to implementation" })
