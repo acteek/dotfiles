@@ -104,7 +104,11 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
-vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "protols", "pyright", "yamlls" })
+vim.lsp.config("metals", {
+	filetypes = { "scala", "sbt", "java" },
+})
+
+vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "protols", "pyright", "yamlls", "metals" })
 
 --  LSP code actions
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
@@ -423,26 +427,3 @@ require("browsher").setup({
 -- Open from the latest commit, the recommended default operation
 vim.keymap.set("n", "<leader>B", "<cmd>Browsher commit<cr>", { silent = true })
 vim.keymap.set("v", "<leader>B", ":'<,'>Browsher commit<cr>gv", { silent = true })
-
--- Scala metals
-vim.pack.add({
-	{ src = "git@github.com:scalameta/nvim-metals.git" },
-})
-
-local metals = require("metals")
-local metals_config = metals.bare_config()
-metals_config.init_options.statusBarProvider = "on"
-metals_config.settings = {
-	showImplicitArguments = true,
-	showImplicitConversionsAndClasses = true,
-	showInferredType = true,
-}
-
-local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "scala", "sbt", "java" },
-	group = nvim_metals_group,
-	callback = function()
-		metals.initialize_or_attach(metals_config)
-	end,
-})
