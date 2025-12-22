@@ -4,6 +4,10 @@
       "rev": "3979b01cb05734331c7873049001d3f2bb8477f4",
       "src": "git@github.com:goolord/alpha-nvim.git"
     },
+    "blink-copilot": {
+      "rev": "7ad8209b2f880a2840c94cdcd80ab4dc511d4f39",
+      "src": "git@github.com:fang2hou/blink-copilot.git"
+    },
     "blink.cmp": {
       "rev": "b19413d214068f316c78978b08264ed1c41830ec",
       "src": "git@github.com:saghen/blink.cmp.git",
@@ -12,10 +16,6 @@
     "browsher.nvim": {
       "rev": "6d87d5b8b0d178f75ee047a04f11c5b172fa705a",
       "src": "git@github.com:claydugo/browsher.nvim.git"
-    },
-    "copilot.vim": {
-      "rev": "f89e977c87180519ba3b942200e3d05b17b1e2fc",
-      "src": "git@github.com:github/copilot.vim.git"
     },
     "everforest-nvim": {
       "rev": "557bce922401e247a596583679bc181d4d688554",

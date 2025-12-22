@@ -16,6 +16,7 @@ vim.opt.ignorecase = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+vim.opt.encoding = "UTF-8" -- Set encoding
 vim.opt.clipboard:append("unnamedplus") -- Use system clipboard
 vim.opt.iskeyword:append("-") -- Treat dash as part of a word
 vim.opt.undofile = true -- Persistent undo
@@ -103,7 +104,6 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
-
 vim.lsp.config("metals", {
 	filetypes = { "scala", "sbt", "java" },
 })
@@ -224,6 +224,17 @@ vim.pack.add({
 	{ src = "git@github.com:williamboman/mason-lspconfig.nvim.git" },
 })
 require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"lua_ls",
+		"gopls",
+		"ts_ls",
+		"protols",
+		"pyright",
+		"yamlls",
+		"copilot",
+	},
+})
 
 -- Telescope
 vim.pack.add({
@@ -343,11 +354,26 @@ null_ls.setup({
 vim.pack.add({
 	{ src = "git@github.com:saghen/blink.cmp.git", version = vim.version.range("^1") },
 	{ src = "git@github.com:rafamadriz/friendly-snippets.git" },
+	{ src = "git@github.com:fang2hou/blink-copilot.git" },
 })
 
 require("blink.cmp").setup({
 	-- See :h blink-cmp-config-keymap for defining your own keymap
 	keymap = { preset = "enter" },
+	sources = {
+		default = { "copilot", "lsp", "buffer", "snippets", "path" },
+		providers = {
+			copilot = {
+				name = "copilot",
+				module = "blink-copilot",
+				score_offset = 100,
+				async = true,
+				opts = {
+					max_completions = 3,
+				},
+			},
+		},
+	},
 	signature = {
 		enabled = true,
 	},
@@ -368,15 +394,6 @@ require("blink.cmp").setup({
 		},
 	},
 })
-
--- Copilot
-vim.pack.add({
-	{ src = "git@github.com:github/copilot.vim.git" },
-})
-
-vim.g.copilot_filetypes = {
-	yaml = true,
-}
 
 -- GitSigns
 vim.pack.add({
