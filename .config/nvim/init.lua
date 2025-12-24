@@ -137,12 +137,10 @@ vim.pack.add({
 	{ src = "git@github.com:nvim-tree/nvim-web-devicons.git" },
 	{ src = "git@github.com:nvim-lua/plenary.nvim.git" },
 	{ src = "git@github.com:neovim/nvim-lspconfig.git" },
-	{ src = "git@github.com:mbbill/undotree.git" },
 	{ src = "git@github.com:mplusp/pack-manager.nvim.git" },
 })
 
 vim.keymap.set("n", "<leader>p", "<cmd>PackMenu<cr>", { desc = "Plugin Maganer" })
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Treesitter
 vim.pack.add({
@@ -444,3 +442,17 @@ require("browsher").setup({
 -- Open from the latest commit, the recommended default operation
 vim.keymap.set("n", "<leader>B", "<cmd>Browsher commit<cr>", { silent = true })
 vim.keymap.set("v", "<leader>B", ":'<,'>Browsher commit<cr>gv", { silent = true })
+
+-- Autopairs
+vim.pack.add({
+	{ src = "git@github.com:windwp/nvim-autopairs.git" },
+})
+
+require("nvim-autopairs").setup({ check_ts = true })
+
+-- UndoTree
+vim.pack.add({
+	{ src = "git@github.com:mbbill/undotree.git" },
+})
+
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)

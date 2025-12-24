@@ -53,6 +53,10 @@
       "rev": "9a5d95cdf9f440683f248f6f0e97f8643804c91b",
       "src": "git@github.com:nvimtools/none-ls.nvim.git"
     },
+    "nvim-autopairs": {
+      "rev": "c2a0dd0d931d0fb07665e1fedb1ea688da3b80b4",
+      "src": "git@github.com:windwp/nvim-autopairs.git"
+    },
     "nvim-lspconfig": {
       "rev": "0044d0987ef7e624d04141d0f90d0481fd3c3663",
       "src": "git@github.com:neovim/nvim-lspconfig.git"
