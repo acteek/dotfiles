@@ -1,11 +1,9 @@
-theme = "onedark"
+theme = "everforest_dark"
 
 [editor]
-bufferline = "multiple"
 cursorline = true
-
-[keys.normal]
-esc = ["collapse_selection", "keep_primary_selection"]
+preview-completion-insert = false
+line-number = "relative" 
 
 [editor.file-picker]
 hidden = false
@@ -13,11 +11,13 @@ hidden = false
 [editor.cursor-shape]
 insert = "bar"
 
-[editor.statusline]
-left = ["mode", "spinner"]
-center = ["file-name"]
-right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
-separator = "│"
-mode.normal = "NORMAL"
-mode.insert = "INSERT"
-mode.select = "SELECT"
+[keys.normal.g]
+a = "code_action"
+c = "toggle_comments"
+
+[keys.normal.space]
+space = "file_picker"
+
+[keys.select.g]
+c = "toggle_comments"
+

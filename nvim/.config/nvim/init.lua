@@ -251,6 +251,10 @@ telescope.setup({
 				["<esc>"] = "close",
 			},
 		},
+		sorting_strategy = "ascending",
+		layout_config = {
+			prompt_position = "top",
+		},
 		file_ignore_patterns = {
 			"node_modules",
 			"dist",
