@@ -26,7 +26,7 @@
       "src": "git@github.com:rafamadriz/friendly-snippets.git"
     },
     "gitsigns.nvim": {
-      "rev": "5813e4878748805f1518cee7abb50fd7205a3a48",
+      "rev": "bf77caa5da671f5bab16e4792711d5aa288e8db0",
       "src": "git@github.com:lewis6991/gitsigns.nvim.git"
     },
     "gruvbox.nvim": {
@@ -38,7 +38,7 @@
       "src": "git@github.com:nvim-lualine/lualine.nvim.git"
     },
     "mason-lspconfig.nvim": {
-      "rev": "0b9bb925c000ae649ff7e7149c8cd00031f4b539",
+      "rev": "4cfe411526a7a99c18281135e8b4765ae6330d15",
       "src": "git@github.com:williamboman/mason-lspconfig.nvim.git"
     },
     "mason.nvim": {
@@ -58,20 +58,20 @@
       "src": "git@github.com:windwp/nvim-autopairs.git"
     },
     "nvim-lspconfig": {
-      "rev": "0044d0987ef7e624d04141d0f90d0481fd3c3663",
+      "rev": "d696e36d5792daf828f8c8e8d4b9aa90c1a10c2a",
       "src": "git@github.com:neovim/nvim-lspconfig.git"
     },
     "nvim-treesitter": {
-      "rev": "d3218d988f72ed34414959c9ccd802d393432d6e",
+      "rev": "36fcb4a4238928f0b627e1ab84ade0acc1facc2c",
       "src": "git@github.com:nvim-treesitter/nvim-treesitter.git",
       "version": "'main'"
     },
     "nvim-web-devicons": {
-      "rev": "8dcb311b0c92d460fac00eac706abd43d94d68af",
+      "rev": "6788013bb9cb784e606ada44206b0e755e4323d7",
       "src": "git@github.com:nvim-tree/nvim-web-devicons.git"
     },
     "oil.nvim": {
-      "rev": "cbcb3f997f6f261c577b943ec94e4ef55108dd95",
+      "rev": "756dec855b4811f2d27f067a3aca477f368d99f5",
       "src": "git@github.com:stevearc/oil.nvim.git"
     },
     "onedark": {
@@ -104,7 +104,7 @@
       "version": "0.2.0 - 0.3.0"
     },
     "treesitter-modules.nvim": {
-      "rev": "feda026577576014e4627204309faab3c814e378",
+      "rev": "dcb5030422732af54631083316887e512e4a79a3",
       "src": "git@github.com:MeanderingProgrammer/treesitter-modules.nvim.git"
     },
     "undotree": {
