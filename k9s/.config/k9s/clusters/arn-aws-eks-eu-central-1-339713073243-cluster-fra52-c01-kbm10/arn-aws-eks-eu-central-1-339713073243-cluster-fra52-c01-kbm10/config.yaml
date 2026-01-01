@@ -1,0 +1,12 @@
+k9s:
+  cluster: arn:aws:eks:eu-central-1:339713073243:cluster/fra52-c01-kbm10
+  namespace:
+    active: default
+    lockFavorites: false
+    favorites:
+      - default
+  view:
+    active: po
+  featureGates:
+    nodeShell: false
+  proxy: null
