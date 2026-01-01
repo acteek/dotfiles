@@ -1,12 +1,13 @@
-
-font-size = 14
-
-font-family = Fira Code
-font-style = Retina
-
 mouse-hide-while-typing = true
 
-theme = Relaxed
+font-family = Fira Code Nerd
+font-style = Retina
+font-size = 14
+
+theme = Everforest Dark Hard
+# Dynamic theme colors
+config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
 background-opacity = 0.96
 background-blur-radius = 40
+
