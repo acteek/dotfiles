@@ -13,6 +13,7 @@ fi
 eval "$(starship init zsh)"
 source <(fzf --zsh)
 
+export CLICOLOR=1
 export TESTCONTAINERS_RYUK_DISABLED=true
 export DOCKER_HOST=unix:///var/run/docker.sock
 export KUBECONFIG=~/.kube/config-aws.yaml
