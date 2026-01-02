@@ -26,10 +26,9 @@ format = "[$symbol$branch(:$remote_branch)]($style) "
 [git_status]
 style = "red"
 format = "[$all_status$ahead_behind]($style) "
-conflicted = " "
-up_to_date = " "
-untracked  = "? "
-modified   = " "
+conflicted = ""
+up_to_date = ""
+untracked  = "?"
 
 [os]
 disabled = false
