@@ -24,7 +24,7 @@ symbol = " "
 format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [git_status]
-style = "aqua"
+style = "red"
 format = "[$all_status$ahead_behind]($style) "
 
 [os]
@@ -34,7 +34,8 @@ style = 'fg:grey2'
 
 [aws]
 style = "yellow"
-format = '[$symbol$profile|$region \[$duration\]]($style)'
+symbol = "☁️ "
+format = '[$symbol$profile | $region \[$duration\]]($style)'
 
 [os.symbols]
 Ubuntu = "󰕈"
