@@ -1,0 +1,52 @@
+
+[window]
+startup_mode = "Maximized"
+decorations_theme_variant = "Dark"
+opacity = 0.98
+
+[font]
+# normal = { family = "FiraCode Nerd Font", style = "Regular" }
+# bold = { family = "FiraCode Nerd Font", style = "Bold" }
+# italic = { family = "FiraCode Nerd Font", style = "Italic" }
+# bold_italic = { family = "FiraCode Nerd Font", style = "Bold Italic" }
+
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "SemiBold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+
+size = 15
+
+[mouse]
+hide_when_typing = true
+
+
+[cursor]
+style = { shape = "Beam", blinking = "Always" }
+
+# Default colors
+[colors.primary]
+background = '#2d353b'
+foreground = '#d3c6aa'
+
+# Normal colors
+[colors.normal]
+black = '#475258'
+red = '#e67e80'
+green = '#a7c080'
+yellow = '#dbbc7f'
+blue = '#7fbbb3'
+magenta = '#d699b6'
+cyan = '#83c092'
+white = '#d3c6aa'
+
+# Bright colors
+[colors.bright]
+black = '#475258'
+red = '#e67e80'
+green = '#a7c080'
+yellow = '#dbbc7f'
+blue = '#7fbbb3'
+magenta = '#d699b6'
+cyan = '#83c092'
+white = '#d3c6aa'
