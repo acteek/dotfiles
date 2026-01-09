@@ -1,5 +1,6 @@
 
 [window]
+option_as_alt = "OnlyLeft"
 startup_mode = "Maximized"
 decorations_theme_variant = "Dark"
 opacity = 0.98
