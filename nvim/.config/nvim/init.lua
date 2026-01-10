@@ -119,6 +119,7 @@ vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code format" })
 vim.keymap.set("n", "<M-j>", "<cmd>m +1<cr>", { desc = "Move line down" })
 vim.keymap.set("n", "<M-k>", "<cmd>m -2<cr>", { desc = "Move line up" })
 vim.keymap.set("n", "<C-j>", "<cmd>t.<cr>", { desc = "Duplicate line" })
+vim.keymap.set("n", "<leader>a", "ggVG", { desc = "Select All" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
@@ -461,3 +462,8 @@ vim.pack.add({
 })
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+-- Render markdown
+vim.pack.add({
+	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
+})
