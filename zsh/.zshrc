@@ -4,8 +4,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
   source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
-  alias nvim="$HOME/nvim-macos-arm64/bin/nvim"
-  export EDITOR="$HOME/nvim-macos-arm64/bin/nvim"
 fi
 
 [ -r ~/.job-stuff.zsh ] && source ~/.job-stuff.zsh
@@ -14,6 +12,7 @@ eval "$(starship init zsh)"
 source <(fzf --zsh)
 
 export CLICOLOR=1
+export EDITOR=nvim
 export TESTCONTAINERS_RYUK_DISABLED=true
 export DOCKER_HOST=unix:///var/run/docker.sock
 export KUBECONFIG=~/.kube/config-aws.yaml
@@ -21,7 +20,8 @@ export K9S_CONFIG_DIR=~/.config/k9s
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/nvim-macos-arm64/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH" # cursor-agent
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm

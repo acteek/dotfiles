@@ -1,0 +1,1 @@
+tmux list-sessions -F '#S' | fzf --bind 'enter:become(tmux switch-client -t {})' --layout reverse
