@@ -128,6 +128,8 @@ vim.keymap.set("n", "}", "}zz", { desc = "Move to next paragraph" })
 vim.keymap.set("n", "{", "{zz", { desc = "Move to previous paragraph" })
 vim.keymap.set("i", "<C-h>", "<Left>", { desc = "Move cursor left" })
 vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Move cursor right" })
+vim.keymap.set("n", "j", "gj", { noremap = true, silent = true })
+vim.keymap.set("n", "k", "gk", { noremap = true, silent = true })
 -- Other keymaps
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear highlight" })
 vim.keymap.set("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
@@ -187,6 +189,11 @@ vim.pack.add({
 	{ src = "git@github.com:navarasu/onedark.nvim.git" },
 	{ src = "git@github.com:neanias/everforest-nvim.git" },
 	{ src = "git@github.com:ellisonleao/gruvbox.nvim.git" },
+})
+
+require("everforest").setup({
+	background = "soft",
+	transparent_background_level = 1,
 })
 
 vim.cmd.colorscheme("everforest")
@@ -462,8 +469,3 @@ vim.pack.add({
 })
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-
--- Render markdown
-vim.pack.add({
-	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
-})

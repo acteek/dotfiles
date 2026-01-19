@@ -15,11 +15,12 @@ export CLICOLOR=1
 export EDITOR=nvim
 export TESTCONTAINERS_RYUK_DISABLED=true
 export DOCKER_HOST=unix:///var/run/docker.sock
-export KUBECONFIG=~/.kube/config-aws.yaml
+export KUBECONFIG="$HOME/.kube/config-aws.yaml:$HOME/.kube/config"
 export K9S_CONFIG_DIR=~/.config/k9s
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
 export PATH="$HOME/nvim-macos-arm64/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH" # cursor-agent
 
