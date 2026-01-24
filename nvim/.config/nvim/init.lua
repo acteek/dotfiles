@@ -134,6 +134,7 @@ vim.keymap.set("n", "k", "gk", { noremap = true, silent = true })
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear highlight" })
 vim.keymap.set("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 vim.keymap.set("n", "<leader>q", "<cmd>cclose<cr>", { desc = "Close Quick list" })
+vim.keymap.set("n", "q:", "<Nop>")
 
 -- Plugins configuration
 -- Common
@@ -238,7 +239,7 @@ require("mason-lspconfig").setup({
 		"protols",
 		"pyright",
 		"yamlls",
-		-- "copilot",
+		"copilot",
 	},
 })
 
@@ -370,20 +371,20 @@ vim.pack.add({
 require("blink.cmp").setup({
 	-- See :h blink-cmp-config-keymap for defining your own keymap
 	keymap = { preset = "enter" },
-	-- sources = {
-	-- 	default = { "copilot", "lsp", "buffer", "snippets", "path" },
-		-- providers = {
-		-- 	copilot = {
-		-- 		name = "copilot",
-		-- 		module = "blink-copilot",
-		-- 		score_offset = 100,
-		-- 		async = true,
-		-- 		opts = {
-		-- 			max_completions = 3,
-		-- 		},
-		-- 	},
-		-- },
-	-- },
+	sources = {
+		default = { "lsp", "copilot", "buffer", "snippets", "path" },
+		providers = {
+			copilot = {
+				name = "copilot",
+				module = "blink-copilot",
+				score_offset = 100,
+				async = true,
+				opts = {
+					max_completions = 3,
+				},
+			},
+		},
+	},
 	signature = {
 		enabled = true,
 	},
