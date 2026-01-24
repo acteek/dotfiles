@@ -134,6 +134,7 @@ vim.keymap.set("n", "k", "gk", { noremap = true, silent = true })
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear highlight" })
 vim.keymap.set("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 vim.keymap.set("n", "<leader>q", "<cmd>cclose<cr>", { desc = "Close Quick list" })
+vim.keymap.set("n", "q:", "<Nop>")
 
 -- Plugins configuration
 -- Common
