@@ -238,7 +238,7 @@ require("mason-lspconfig").setup({
 		"protols",
 		"pyright",
 		"yamlls",
-		-- "copilot",
+		"copilot",
 	},
 })
 
@@ -370,20 +370,20 @@ vim.pack.add({
 require("blink.cmp").setup({
 	-- See :h blink-cmp-config-keymap for defining your own keymap
 	keymap = { preset = "enter" },
-	-- sources = {
-	-- 	default = { "copilot", "lsp", "buffer", "snippets", "path" },
-		-- providers = {
-		-- 	copilot = {
-		-- 		name = "copilot",
-		-- 		module = "blink-copilot",
-		-- 		score_offset = 100,
-		-- 		async = true,
-		-- 		opts = {
-		-- 			max_completions = 3,
-		-- 		},
-		-- 	},
-		-- },
-	-- },
+	sources = {
+		default = { "lsp", "copilot", "buffer", "snippets", "path" },
+		providers = {
+			copilot = {
+				name = "copilot",
+				module = "blink-copilot",
+				score_offset = 100,
+				async = true,
+				opts = {
+					max_completions = 3,
+				},
+			},
+		},
+	},
 	signature = {
 		enabled = true,
 	},
