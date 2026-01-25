@@ -157,6 +157,7 @@
   min-width: 40px;
   font-size: 14;
   /* margin-right: 0px;  */
+  color: #c6d0f5;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
@@ -171,6 +172,7 @@
   color: #babbf1;
 }
 #cpu {
+  min-width: 100px;
   color: #c6d0f5;
 }
 
@@ -198,11 +200,13 @@
   color: #babbf1;
 }
 #bluetooth {
-  color: #888888;
+  color: #c6d0f5;
+  /* color: #888888; */
   font-size: 16px;
 }
 #bluetooth.on {
-  color: #2196f3;
+  color: #c6d0f5;
+  /* color: #2196f3; */
 }
 #bluetooth.connected {
   color: #99d1db;
