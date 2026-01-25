@@ -7,6 +7,7 @@
   "modules-left": [
     "hyprland/workspaces",
     "cpu",
+    "temperature",
     "memory"
   ],
   "modules-center": [
@@ -46,7 +47,7 @@
     "tooltip-format-connected": "{device_enumerate}"
   },
   "custom/music": {
-    "format": "  {}",
+    "format": "   -  {}",
     "escape": true,
     "interval": 2,
     "tooltip": false,
@@ -57,9 +58,28 @@
     "max-length": 50
   },
   "clock": {
-    "tooltip": false,
-    "format": "{:%H:%M:%S  -  %A, %d %b}",
-    "interval": 1
+    "tooltip": true,
+    "format": "{:%H:%M:%S     -   %A, %d %b}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "interval": 1,
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 2,
+      "weeks-pos": "right",
+      "on-scroll": 1, 
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>{:%W}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   },
   "network": {
     "format-wifi": "󰤢",
@@ -89,6 +109,18 @@
     "format": "  {used:0.1f}G/{total:0.1f}G",
     "tooltip-format": "Memory",
     "on-click": "omarchy-launch-or-focus-tui btop"
+  },
+  "temperature": {
+    "tooltip": false,
+    "interval": 5,
+    "hwmon-path": [
+      "/sys/class/hwmon/hwmon7/temp1_input",
+      "/sys/class/hwmon/hwmon7/temp2_input",
+      "/sys/class/hwmon/hwmon7/temp3_input"
+    ],
+    "warning-threshold": 50,
+    "critical-threshold": 50,
+    "format": "{temperatureC}°C "
   },
   "backlight": {
     "format": "{icon}  {percent}%",
@@ -161,12 +193,5 @@
     "tooltip": false,
     "on-click": "sh -c '(sleep 0s; hyprlock)' & disown",
     "format": ""
-  },
-  "custom/pomodoro": {
-    "format": "{}",
-    "return-type": "json",
-    "exec": "waybar-module-pomodoro --no-work-icons",
-    "on-click": "waybar-module-pomodoro toggle",
-    "on-click-right": "waybar-module-pomodoro reset"
   }
 }
