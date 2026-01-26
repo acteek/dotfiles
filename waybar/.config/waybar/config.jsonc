@@ -31,7 +31,7 @@
     }
   },
   "hyprland/language": {
-    "format": "  {short}"
+    "format": " {short}"
   },
   "bluetooth": {
     "format": "󰂲",
@@ -47,7 +47,7 @@
     "tooltip-format-connected": "{device_enumerate}"
   },
   "custom/music": {
-    "format": "   -  {}",
+    "format": "  - {}",
     "escape": true,
     "interval": 2,
     "tooltip": false,
@@ -59,7 +59,7 @@
   },
   "clock": {
     "tooltip": true,
-    "format": "{:%H:%M:%S     -   %A, %d %b}",
+    "format": "{:%H:%M:%S   -  %A, %d %b}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "interval": 1,
     "calendar": {
@@ -120,10 +120,10 @@
     ],
     "warning-threshold": 50,
     "critical-threshold": 50,
-    "format": "{temperatureC}°C "
+    "format": " {temperatureC}°C"
   },
   "backlight": {
-    "format": "{icon}  {percent}%",
+    "format": "{icon} {percent}%",
     "format-icons": [
       "",
       "󰃜",
@@ -136,7 +136,7 @@
     "tooltip": false
   },
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
+    "format": "{icon} {volume}%",
     "format-muted": "",
     "format-icons": {
       "headphone": "",
