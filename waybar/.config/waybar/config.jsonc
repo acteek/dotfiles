@@ -24,10 +24,13 @@
     "battery#bat1"
   ],
   "hyprland/workspaces": {
-    "format": "{name}: {icon}",
-    "format-icons": {
-      "active": "",
-      "default": ""
+    "format": "{name}",
+    "disable-scroll": true,
+    "all-outputs": false,
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "eDP-1": [1],
+      "HDMI-A-2": [2,3,4]
     }
   },
   "hyprland/language": {
@@ -66,7 +69,7 @@
       "mode": "month",
       "mode-mon-col": 2,
       "weeks-pos": "right",
-      "on-scroll": 1, 
+      "on-scroll": 1,
       "format": {
         "months": "<span color='#ffead3'><b>{}</b></span>",
         "days": "<span color='#ecc6d9'><b>{}</b></span>",
@@ -188,10 +191,5 @@
       "",
       ""
     ]
-  },
-  "custom/lock": {
-    "tooltip": false,
-    "on-click": "sh -c '(sleep 0s; hyprlock)' & disown",
-    "format": ""
   }
 }
