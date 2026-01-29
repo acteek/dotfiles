@@ -1,47 +1,40 @@
 @import "../omarchy/current/theme/waybar.css";
 
-/* --- Global Styles --- */
 * {
   font-family: 'FiraCode Nerd Font';
   font-size: 14px;
   min-height: 0;
+  min-width: 0px;
   padding-right: 0px;
   padding-left: 0px;
   padding-bottom: 0px;
 }
 
-/* --- Waybar Container --- */
 #waybar {
   background: transparent;
   margin: 0px;
   font-weight: 500;
 }
 
-/* --- Left Modules --- */
-#workspaces,
-#memory,
-#temperature,
-#cpu {
-  background-color: @background;
+
+#workspaces {
+  background-color: #414B50;
   padding: 0.3rem 0.7rem;
-  margin: 5px 3px; /* 5px top/bottom margin, 0px left/right (base for individual control) */
-  border-radius: 6px; /* These modules are always rounded */
+  margin: 5px 3px; 
+  border-radius: 10px; 
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   min-width: 0;
   border: none;
-  /* Transition for background-color and color only */
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-
-#workspaces {
-  padding: 2px;
-  margin-left: 10px; /* Margin from the far left edge */
-  margin-right: 3px; /* Spacing after the workspaces module */
+  color: @foreground;
+  padding: 3px;
+  margin-left: 10px;
 }
 
 #workspaces button {
-  color: #babbf1;
-  border-radius: 5px; /* Workspaces buttons are always rounded */
+  color: @foreground;
+  border-radius: 10px; 
+  min-width: 20px;
   padding: 0.3rem 0.6rem;
   background: transparent;
   transition: all 0.2s ease-in-out;
@@ -50,53 +43,46 @@
 }
 
 #workspaces button.active {
-  color: #99d1db;
-  background-color: rgba(153, 209, 219, 0.1);
+  color: #414B50;
+  border-radius: 10px;
+  background-color: #83C092;
+  min-width: 20px;
   box-shadow: inset 0 0 0 1px rgba(153, 209, 219, 0.2);
 }
 
-#workspaces button:hover {
-  background: rgb(41, 42, 53); /* Reference bright hover color */
-  color: #c6d0f5;
+#memory,
+#temperature,
+#cpu {
+  color: @foreground;
+  background-color: #414B50;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 3px; 
+  border-radius: 10px; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-/* --- Center Module --- */
 #clock {
-  color: #99d1db;
+  color: @foreground;
   font-weight: 500;
   font-size: 14;
-  background-color: @background;
+  background-color: #414B50;
   padding: 0.3rem 0.7rem;
   margin: 5px 0px;
-  border-radius: 6px; /* This module is always rounded */
-  /* box-shadow: 0 1px 3px rgba(153, 209, 219, 0.2); */
-  min-width: 100px;
+  border-radius: 10px; 
   border: none;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-#custom-music {
-  color: #c6d0f5;
-  background-color: @background;
-  padding: 0.3rem 0.7rem;
-  margin: 5px 0px;
-  border-radius: 6px; /* This module is always rounded */
-  margin-left: 5px; /* Spacing from the previous module (e.g., clock) */
-  margin-right: 5px; /* Spacing before the seamless right bar starts (e.g., bluetooth) */
-  /* box-shadow: 0 1px 3px rgba(153, 209, 219, 0.2); */
-  min-width: 200px;
-  border: none;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-
-/* --- Right Modules --- */
 #bluetooth,
 #pulseaudio,
 #backlight,
 #network,
-#language,
-#battery {
-  background-color: @background;
+#language {
+  color: @foreground;
+  background-color: #414B50;
   padding: 0.3rem 0.7rem;
   margin: 5px 0px; 
   border-radius: 0;
@@ -106,83 +92,87 @@
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-#bluetooth:hover,
-#pulseaudio:hover,
-#backlight:hover,
-#network:hover,
-#language:hover,
-#battery:hover {
-  background-color: rgb(41, 42, 53);
+#cpu {
+  min-width: 100px;
 }
 
 #language {
   min-width: 40px;
   font-size: 14;
   margin-right: 0px; 
-  color: #c6d0f5;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+  color: @foreground;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#battery {
+  background-color: #414B50;
+  color: #A7C080;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 0px; 
+  border-radius: 0;
+  box-shadow: none;
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#battery.bat0 {
+  margin-left: 5px; 
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 #battery.bat1 {
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   margin-right: 10px;
 }
 
-#cpu {
-  min-width: 100px;
-  color: #c6d0f5;
+#battery.charging {
+  color: #DBBC7F;
 }
 
-#memory {
-  color: #c6d0f5;
+#battery.warning:not(.charging) {
+  color: #E67E80;
 }
 
-#temperature {
-  color: #c6d0f5;
-}
-
-#pulseaudio {
-  color: #c6d0f5;
+#pulseaudio.muted {
+  color: #E67E80;
+  font-size: 16px;
 }
 
 #backlight {
-  color: #c6d0f5;
+  color: @foreground;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 #network {
-  color: #c6d0f5;
+  color: @foreground;
 }
 
 #network.disconnected {
-  color: #e78284;
+  color: #E67E80;
+  font-size: 16px;
 }
 
 #bluetooth {
-  color: #c6d0f5;
   font-size: 16px;
 }
+
 #bluetooth.on {
-  color: #c6d0f5;
-}
-#bluetooth.connected {
-  color: #99d1db;
-}
-#battery {
-  color: #99d1db;;
-}
-#battery.charging {
-  color: #a6d189;
-}
-#battery.warning:not(.charging) {
-  color: #e78284;
+  color: @foreground;
 }
 
-/* --- Tooltip Styles --- */
+#bluetooth.connected {
+  color: #7FBBB3;
+}
+
+
 tooltip {
-  background-color: #1a1b26;
-  color: #dddddd;
+  background-color: #414B50;
+  color: @foreground;
   padding: 5px 12px;
   margin: 5px 0px;
   border-radius: 6px;
