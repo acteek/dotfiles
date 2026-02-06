@@ -193,8 +193,8 @@ vim.pack.add({
 })
 
 require("everforest").setup({
-  background = "medium",
-  transparent_backgroung_level = 1,
+	background = "medium",
+	transparent_background_level = 1,
 })
 vim.cmd.colorscheme("everforest")
 
@@ -421,8 +421,8 @@ require("gitsigns").setup({
 			vim.keymap.set("n", l, r, { buffer = bufnr, desc = "Gitsigns: " .. desc })
 		end
 
-		map("<leader>ph", gitsigns.preview_hunk, "Preview hunk")
-		map("<leader>rh", gitsigns.reset_hunk, "Reset hunk")
+		map("<leader>hp", gitsigns.preview_hunk, "Preview hunk")
+		map("<leader>hr", gitsigns.reset_hunk, "Reset hunk")
 		map("<leader>lb", function()
 			gitsigns.blame_line({ full = true })
 		end, "Blame line")

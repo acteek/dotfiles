@@ -32,15 +32,17 @@ for PROJECT in $(ls $DIR); do
   fi
   echo "Creating session for project: $PROJECT"
   tmux new-session -d -s "$PROJECT" -x- -y- -n "nvim" -c "$DIR/$PROJECT" 
+  tmux new-window -t "$PROJECT" -n "opencode" -c "$DIR/$PROJECT"
   tmux new-window -t "$PROJECT" -n "zsh" -c "$DIR/$PROJECT"
 
-  tmux split-window -t "$PROJECT:nvim" -h -c "$DIR/$PROJECT"
-  tmux split-window -t "$PROJECT:nvim" -v -c "$DIR/$PROJECT"
-  tmux resize-pane -t "$PROJECT:nvim.1" -R 50
-  tmux resize-pane -t "$PROJECT:nvim.2" -U 10
+  # tmux split-window -t "$PROJECT:nvim" -h -c "$DIR/$PROJECT"
+  # tmux split-window -t "$PROJECT:nvim" -v -c "$DIR/$PROJECT"
+  # tmux resize-pane -t "$PROJECT:nvim.1" -R 50
+  # tmux resize-pane -t "$PROJECT:nvim.2" -U 10
 
   tmux send-keys -t "$PROJECT:nvim.1" "nvim" Enter 0
-  tmux clock-mode -t "$PROJECT:nvim.2"
+  tmux send-keys -t "$PROJECT:opencode.1" "opencode" Enter
+  # tmux clock-mode -t "$PROJECT:nvim.2"
 
   tmux select-window -t "$PROJECT:nvim"
   tmux select-pane -t "$PROJECT:nvim.1"

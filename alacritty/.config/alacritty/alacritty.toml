@@ -19,7 +19,7 @@ bold = { family = "JetBrainsMono Nerd Font", style = "SemiBold" }
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
 
-size = 14
+size = 15
 
 [mouse]
 hide_when_typing = true
