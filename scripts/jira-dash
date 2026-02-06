@@ -1,0 +1,28 @@
+export TERM="screen-256color"
+export COLUMNS="KEY,TYPE,STATUS,PRIORITY,ASSIGNEE,SUMMARY"
+export JIRA_Q="team=IVA.Backend AND type IN (Task,Bug,Improvement,Epic) AND status IN (Open,'In Progress','In Testing','Code Review',Resolved)"
+export JIRA_CMD="jira issue list -q\"$JIRA_Q\" --updated -30d --plain --columns \"$COLUMNS\""
+
+
+
+eval "$JIRA_CMD" | fzf \
+--reverse \
+--preview-window up,25 \
+--footer=$'(R)eload | (N)ew | (O)pen | (E)dit | (M)ove | (A)ssign | (S)elf assign | (L)ink | (P)aste comment | (Y)ank key | (C)lose \n' \
+--header-lines=1 \
+--multi \
+--cycle \
+--preview 'jira issue view {1} --plain --comments 5' \
+--bind 'ctrl-o:execute-silent(jira open {1}; tmux display-message "Opening in browser..." )' \
+--bind 'ctrl-y:execute-silent(echo -n {1} | pbcopy; tmux display-message "Key copied to clipboard")' \
+--bind 'ctrl-m:execute-silent(tmux popup -T "Move issue"  -E -h 30% -w 30% jira issue move {1})+reload(eval "$JIRA_CMD")' \
+--bind 'ctrl-e:execute-silent(tmux popup -T "Edit issue" -E -h 80% -w 80% jira issue edit {1})+reload(eval "$JIRA_CMD")' \
+--bind 'ctrl-p:execute-silent(tmux popup -T "Paste comment" -E -h 80% -w 80% jira issue comment add {1})' \
+--bind 'ctrl-a:execute-silent(tmux popup -T "Assign issue" -E -h 30% -w 30% jira issue assign {1})+reload(eval "$JIRA_CMD")' \
+--bind 'ctrl-s:execute-silent(jira issue assign {1} $(jira me))+reload(eval "$JIRA_CMD")' \
+--bind "ctrl-g:reload(jira epic list --order-by priority --columns \"$COLUMNS\" --plain {1}; tmux display-message \"Go to Epic: {1}\"  )+clear-query" \
+--bind 'ctrl-t:execute-silent(jira epic add {+1}; tmux display-message "Move issues to epic {+1}")' \
+--bind 'ctrl-l:execute-silent(tmux popup -T "Link issues" -E -h 30% -w 30%  jira issue link {+1} )' \
+--bind 'ctrl-n:execute-silent(tmux popup -T "New issue" -E -h 80% -w 80% jira issue create -tTask --custom team="IVA.Backend")+reload(eval "$JIRA_CMD")' \
+--bind 'ctrl-r:reload(eval "$JIRA_CMD")' 
+

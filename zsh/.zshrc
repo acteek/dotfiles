@@ -24,5 +24,4 @@ export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
 export PATH="$HOME/nvim-macos-arm64/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH" # cursor-agent
 
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+alias ps='ps -exo "pid,%cpu,%mem,command" | fzf --reverse --header-lines=1 --tmux 80% --multi --bind "enter:become(kill -9  {+1})"'
