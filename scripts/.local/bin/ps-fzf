@@ -1,0 +1,1 @@
+ps -exo "pid,%cpu,%mem,command" | fzf --reverse --header-lines=1 --tmux 80% --multi --bind "enter:become(kill -9  {+1})"

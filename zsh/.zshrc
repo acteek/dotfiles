@@ -22,6 +22,6 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
 export PATH="$HOME/nvim-macos-arm64/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH" # cursor-agent
+export PATH="$HOME/.local/bin:$PATH" 
 
-alias ps='ps -exo "pid,%cpu,%mem,command" | fzf --reverse --header-lines=1 --tmux 80% --multi --bind "enter:become(kill -9  {+1})"'
+alias ps='ps-fzf'

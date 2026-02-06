@@ -9,7 +9,7 @@
       "src": "git@github.com:fang2hou/blink-copilot.git"
     },
     "blink.cmp": {
-      "rev": "b19413d214068f316c78978b08264ed1c41830ec",
+      "rev": "4b18c32adef2898f95cdef6192cbd5796c1a332d",
       "src": "git@github.com:saghen/blink.cmp.git",
       "version": "1.0.0 - 2.0.0"
     },
@@ -22,15 +22,19 @@
       "src": "git@github.com:neanias/everforest-nvim.git"
     },
     "friendly-snippets": {
-      "rev": "572f5660cf05f8cd8834e096d7b4c921ba18e175",
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "git@github.com:rafamadriz/friendly-snippets.git"
     },
     "gitsigns.nvim": {
-      "rev": "6bd29494e3f79ff08be1d35bc1926ed23c22ed9a",
+      "rev": "1ce96a464fdbc24208e24c117e2021794259005d",
       "src": "git@github.com:lewis6991/gitsigns.nvim.git"
     },
+    "gruvbox-material": {
+      "rev": "790afe9dd085aa04eccd1da3626c5fa05c620e53",
+      "src": "git@github.com:sainnhe/gruvbox-material.git"
+    },
     "gruvbox.nvim": {
-      "rev": "5e0a460d8e0f7f669c158dedd5f9ae2bcac31437",
+      "rev": "a472496e1a4465a2dd574389dcf6cdb29af9bf1b",
       "src": "git@github.com:ellisonleao/gruvbox.nvim.git"
     },
     "lualine.nvim": {
@@ -38,40 +42,40 @@
       "src": "git@github.com:nvim-lualine/lualine.nvim.git"
     },
     "mason-lspconfig.nvim": {
-      "rev": "4cfe411526a7a99c18281135e8b4765ae6330d15",
+      "rev": "ae609525ddf01c153c39305730b1791800ffe4fe",
       "src": "git@github.com:williamboman/mason-lspconfig.nvim.git"
     },
     "mason.nvim": {
-      "rev": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800",
+      "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
       "src": "git@github.com:williamboman/mason.nvim.git"
     },
     "none-ls-extras.nvim": {
-      "rev": "03955d165621300965a6d685c8f399ec7efd5785",
+      "rev": "6ced4fc4072c7b269ba95bb596196cc76e00b280",
       "src": "git@github.com:nvimtools/none-ls-extras.nvim.git"
     },
     "null-ls": {
-      "rev": "0b457958cb958c16850b5a1fb38bbcd982909181",
+      "rev": "68ed8b9bf5dfdae4d579fcd19723926f84d7b6cb",
       "src": "git@github.com:nvimtools/none-ls.nvim.git"
     },
     "nvim-autopairs": {
-      "rev": "c2a0dd0d931d0fb07665e1fedb1ea688da3b80b4",
+      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
       "src": "git@github.com:windwp/nvim-autopairs.git"
     },
     "nvim-lspconfig": {
-      "rev": "0b38bc74487e73489624d61396af7805af9cc75f",
+      "rev": "0480b120318ec8bab27b530ffab6ee76a8c4d806",
       "src": "git@github.com:neovim/nvim-lspconfig.git"
     },
     "nvim-treesitter": {
-      "rev": "99dfc5acefd7728cec4ad0d0a6a9720f2c2896ff",
+      "rev": "70a9fecaf5aeae70c765d4c51a8038165a91aa06",
       "src": "git@github.com:nvim-treesitter/nvim-treesitter.git",
       "version": "'main'"
     },
     "nvim-web-devicons": {
-      "rev": "6788013bb9cb784e606ada44206b0e755e4323d7",
+      "rev": "746ffbb17975ebd6c40142362eee1b0249969c5c",
       "src": "git@github.com:nvim-tree/nvim-web-devicons.git"
     },
     "oil.nvim": {
-      "rev": "81b8a91735ad5cd24a6b3137f14a89f19176364f",
+      "rev": "f55b25e493a7df76371cfadd0ded5004cb9cd48a",
       "src": "git@github.com:stevearc/oil.nvim.git"
     },
     "onedark": {
@@ -104,11 +108,11 @@
       "version": "0.2.0 - 0.3.0"
     },
     "treesitter-modules.nvim": {
-      "rev": "7efc486c933a361568855b10e0829aa2cda4b6b0",
+      "rev": "0cc09da40061051b0186479203faa75052cddab6",
       "src": "git@github.com:MeanderingProgrammer/treesitter-modules.nvim.git"
     },
     "undotree": {
-      "rev": "178d19e00a643f825ea11d581b1684745d0c4eda",
+      "rev": "fc28931fbfba66ab75d9af23fe46ffbbb9de6e8c",
       "src": "git@github.com:mbbill/undotree.git"
     }
   }
