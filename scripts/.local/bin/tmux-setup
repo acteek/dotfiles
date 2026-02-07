@@ -11,13 +11,15 @@ if tmux has-session -t "home" 2>/dev/null; then
   echo "Session home already exists. Skipping..."
 else
   tmux new-session -d -s "home" -x- -y- -n "zsh" -c "$HOME"
+  tmux new-window -t "home" -n "jira" 
   tmux new-window -t "home" -n "dotfiles" -c "$HOME/dotfiles"
   tmux split-window -t "home:zsh" -h -c "$HOME"
-  tmux split-window -t "home:zsh" -v -c "$HOME"  
+  # tmux split-window -t "home:zsh" -v -c "$HOME"  
   tmux resize-pane -t "home:zsh.1" -R 50
-  tmux resize-pane -t "home:zsh.2" -U 10
+  # tmux resize-pane -t "home:zsh.2" -U 10
 
   tmux send-keys -t "home:dotfiles.1" nvim Enter 0
+  tmux send-keys -t "home:jira.1" jira-dash Enter
   tmux clock-mode -t "home:zsh.2"
   
   tmux select-window -t "home:zsh"
