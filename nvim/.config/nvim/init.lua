@@ -427,11 +427,11 @@ require("gitsigns").setup({
 	on_attach = function(bufnr)
 		local gitsigns = require("gitsigns")
 
-		vim.keymap.set("n", "<leader>hp",gitsigns.preview_hunk_inline, { buffer = bufnr })
+		vim.keymap.set("n", "<leader>hp", gitsigns.preview_hunk_inline, { buffer = bufnr })
 		vim.keymap.set("n", "<leader>hr", gitsigns.reset_hunk, { buffer = bufnr })
+		vim.keymap.set("n", "<leader>hR", gitsigns.reset_buffer, { buffer = bufnr })
 		vim.keymap.set("n", "]h", gitsigns.next_hunk, { buffer = bufnr })
 		vim.keymap.set("n", "[h", gitsigns.prev_hunk, { buffer = bufnr })
-
 	end,
 	worktrees = {
 		{
