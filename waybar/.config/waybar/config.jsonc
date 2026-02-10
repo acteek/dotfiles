@@ -11,8 +11,7 @@
     "memory"
   ],
   "modules-center": [
-    "clock",
-    "custom/music"
+    "clock"
   ],
   "modules-right": [
     "hyprland/language",
