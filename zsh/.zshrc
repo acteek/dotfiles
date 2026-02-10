@@ -22,7 +22,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
 export PATH="$HOME/nvim-macos-arm64/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH" # cursor-agent
+export PATH="$HOME/.local/bin:$PATH" 
 
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+alias ps='ps-fzf'
+eval "$(~/.local/bin/mise activate zsh)"

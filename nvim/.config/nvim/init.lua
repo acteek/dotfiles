@@ -108,7 +108,16 @@ vim.lsp.config("metals", {
 	filetypes = { "scala", "sbt", "java" },
 })
 
-vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "protols", "pyright", "yamlls", "metals" })
+vim.lsp.enable({
+	"lua_ls",
+	"gopls",
+	"ts_ls",
+	"protols",
+	"pyright",
+	"yamlls",
+	"metals",
+	"kotlin_language_server",
+})
 
 --  LSP code actions
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
@@ -193,8 +202,8 @@ vim.pack.add({
 })
 
 require("everforest").setup({
-  background = "medium",
-  transparent_backgroung_level = 1,
+	background = "medium",
+	transparent_background_level = 1,
 })
 vim.cmd.colorscheme("everforest")
 
@@ -239,6 +248,7 @@ require("mason-lspconfig").setup({
 		"protols",
 		"pyright",
 		"yamlls",
+		"kotlin_language_server",
 		"copilot",
 	},
 })
@@ -417,17 +427,11 @@ require("gitsigns").setup({
 	on_attach = function(bufnr)
 		local gitsigns = require("gitsigns")
 
-		local function map(l, r, desc)
-			vim.keymap.set("n", l, r, { buffer = bufnr, desc = "Gitsigns: " .. desc })
-		end
-
-		map("<leader>ph", gitsigns.preview_hunk, "Preview hunk")
-		map("<leader>rh", gitsigns.reset_hunk, "Reset hunk")
-		map("<leader>lb", function()
-			gitsigns.blame_line({ full = true })
-		end, "Blame line")
-		map("]h", gitsigns.next_hunk, "Next hunk")
-		map("[h", gitsigns.prev_hunk, "Prev hunk")
+		vim.keymap.set("n", "<leader>hp", gitsigns.preview_hunk_inline, { buffer = bufnr })
+		vim.keymap.set("n", "<leader>hr", gitsigns.reset_hunk, { buffer = bufnr })
+		vim.keymap.set("n", "<leader>hR", gitsigns.reset_buffer, { buffer = bufnr })
+		vim.keymap.set("n", "]h", gitsigns.next_hunk, { buffer = bufnr })
+		vim.keymap.set("n", "[h", gitsigns.prev_hunk, { buffer = bufnr })
 	end,
 	worktrees = {
 		{
