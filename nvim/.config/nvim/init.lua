@@ -157,11 +157,11 @@ vim.pack.add({
 
 vim.keymap.set("n", "<leader>p", vim.pack.update, { desc = "Update dashboard" })
 vim.keymap.set("n", "<leader>P", function()
-  local data = vim.pack.get()
+	local data = vim.pack.get()
 	local plugins = {}
 	for _, plugin in ipairs(data) do
 		local name = plugin.spec.name
-    table.insert(plugins, name)
+		table.insert(plugins, name)
 	end
 	vim.pack.update(plugins, { force = true })
 end, { desc = "Force update all plugins" })
@@ -399,6 +399,7 @@ require("blink.cmp").setup({
 				module = "blink-copilot",
 				score_offset = 100,
 				async = true,
+				enabled = false,
 				opts = {
 					max_completions = 3,
 				},
