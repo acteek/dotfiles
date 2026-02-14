@@ -1,3 +1,5 @@
+require("kotlin-lsp-fix")
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.swapfile = false
@@ -116,7 +118,7 @@ vim.lsp.enable({
 	"pyright",
 	"yamlls",
 	"metals",
-	"kotlin_language_server",
+	"kotlin_lsp",
 })
 
 --  LSP code actions
@@ -151,10 +153,18 @@ vim.pack.add({
 	{ src = "git@github.com:nvim-tree/nvim-web-devicons.git" },
 	{ src = "git@github.com:nvim-lua/plenary.nvim.git" },
 	{ src = "git@github.com:neovim/nvim-lspconfig.git" },
-	{ src = "git@github.com:mplusp/pack-manager.nvim.git" },
 })
 
-vim.keymap.set("n", "<leader>p", "<cmd>PackMenu<cr>", { desc = "Plugin Maganer" })
+vim.keymap.set("n", "<leader>p", vim.pack.update, { desc = "Update dashboard" })
+vim.keymap.set("n", "<leader>P", function()
+  local data = vim.pack.get()
+	local plugins = {}
+	for _, plugin in ipairs(data) do
+		local name = plugin.spec.name
+    table.insert(plugins, name)
+	end
+	vim.pack.update(plugins, { force = true })
+end, { desc = "Force update all plugins" })
 
 -- Treesitter
 vim.pack.add({
@@ -248,7 +258,7 @@ require("mason-lspconfig").setup({
 		"protols",
 		"pyright",
 		"yamlls",
-		"kotlin_language_server",
+		"kotlin_lsp",
 		"copilot",
 	},
 })

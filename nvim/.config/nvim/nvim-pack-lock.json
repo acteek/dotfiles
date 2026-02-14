@@ -1,7 +1,7 @@
 {
   "plugins": {
     "alpha-nvim": {
-      "rev": "3979b01cb05734331c7873049001d3f2bb8477f4",
+      "rev": "a9d8fb72213c8b461e791409e7feabb74eb6ce73",
       "src": "git@github.com:goolord/alpha-nvim.git"
     },
     "blink-copilot": {
@@ -26,7 +26,7 @@
       "src": "git@github.com:rafamadriz/friendly-snippets.git"
     },
     "gitsigns.nvim": {
-      "rev": "1ce96a464fdbc24208e24c117e2021794259005d",
+      "rev": "9f3c6dd7868bcc116e9c1c1929ce063b978fa519",
       "src": "git@github.com:lewis6991/gitsigns.nvim.git"
     },
     "gruvbox-material": {
@@ -42,7 +42,7 @@
       "src": "git@github.com:nvim-lualine/lualine.nvim.git"
     },
     "mason-lspconfig.nvim": {
-      "rev": "ae609525ddf01c153c39305730b1791800ffe4fe",
+      "rev": "21c2a84ce368e99b18f52ab348c4c02c32c02fcf",
       "src": "git@github.com:williamboman/mason-lspconfig.nvim.git"
     },
     "mason.nvim": {
@@ -50,7 +50,7 @@
       "src": "git@github.com:williamboman/mason.nvim.git"
     },
     "none-ls-extras.nvim": {
-      "rev": "6ced4fc4072c7b269ba95bb596196cc76e00b280",
+      "rev": "ca22d81c34410bd3759bc95a8206d5d3c300e12a",
       "src": "git@github.com:nvimtools/none-ls-extras.nvim.git"
     },
     "null-ls": {
@@ -62,11 +62,11 @@
       "src": "git@github.com:windwp/nvim-autopairs.git"
     },
     "nvim-lspconfig": {
-      "rev": "0480b120318ec8bab27b530ffab6ee76a8c4d806",
+      "rev": "44acfe887d4056f704ccc4f17513ed41c9e2b2e6",
       "src": "git@github.com:neovim/nvim-lspconfig.git"
     },
     "nvim-treesitter": {
-      "rev": "70a9fecaf5aeae70c765d4c51a8038165a91aa06",
+      "rev": "4d9466677a5ceadef104eaa0fe08d60d91c4e9a7",
       "src": "git@github.com:nvim-treesitter/nvim-treesitter.git",
       "version": "'main'"
     },
@@ -85,10 +85,6 @@
     "onedark.nvim": {
       "rev": "213c23ae45a04797572242568d5d51937181792d",
       "src": "git@github.com:navarasu/onedark.nvim.git"
-    },
-    "pack-manager.nvim": {
-      "rev": "e947437ab03c2e20d7eb4e27d1a5f043a9ab1d72",
-      "src": "git@github.com:mplusp/pack-manager.nvim.git"
     },
     "plenary.nvim": {
       "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
@@ -112,7 +108,7 @@
       "src": "git@github.com:MeanderingProgrammer/treesitter-modules.nvim.git"
     },
     "undotree": {
-      "rev": "fc28931fbfba66ab75d9af23fe46ffbbb9de6e8c",
+      "rev": "d8f99084d98c32f651860eb0baaf89759f91debc",
       "src": "git@github.com:mbbill/undotree.git"
     }
   }
