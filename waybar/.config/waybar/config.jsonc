@@ -1,0 +1,176 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "margin-bottom": -10,
+  "spacing": 0,
+  "modules-left": [
+    "hyprland/workspaces",
+    "cpu",
+    "temperature",
+    "memory"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "hyprland/language",
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "battery#bat0",
+    "battery#bat1"
+  ],
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "disable-scroll": true,
+    "all-outputs": false,
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "eDP-1": [1,2,3],
+      "HDMI-A-2": [4,5,5]
+    }
+  },
+  "hyprland/language": {
+    "format": " {short}"
+  },
+  "bluetooth": {
+    "format": "󰂲",
+    "format-on": "{icon}",
+    "format-off": "{icon}",
+    "format-connected": "{icon}",
+    "format-icons": {
+      "on": "󰂯",
+      "off": "󰂲",
+      "connected": "󰂱"
+    },
+    "on-click": "omarchy-launch-bluetooth",
+    "tooltip-format-connected": "{device_enumerate}"
+  },
+  "custom/music": {
+    "format": "  - {}",
+    "escape": true,
+    "interval": 2,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+    "on-click": "playerctl play-pause",
+    "on-double-click": "playerctl next",
+    "on-click-right": "playerctl previous",
+    "max-length": 50
+  },
+  "clock": {
+    "tooltip": false,
+    "format": "{:%d %b 󰃭 %A -  %H:%M:%S }",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "interval": 1,
+  },
+  "network": {
+    "format-wifi": "󰤢",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰤠 ",
+    "interval": 5,
+    "tooltip-format": "{essid} ({signalStrength}%)",
+    "on-click": "omarchy-launch-wifi"
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "  {icon0}{icon1}{icon2}{icon3} {load:0.2f}",
+    "format-icons": [
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ],
+    "on-click": "omarchy-launch-or-focus-tui btop"
+  },
+  "memory": {
+    "interval": 30,
+    "format": "  {percentage}%",
+    "tooltip-format": "Memory",
+    "on-click": "omarchy-launch-or-focus-tui btop"
+  },
+  "temperature": {
+    "tooltip": false,
+    "interval": 5,
+    "hwmon-path": [
+      "/sys/class/hwmon/hwmon7/temp1_input",
+      "/sys/class/hwmon/hwmon7/temp2_input",
+      "/sys/class/hwmon/hwmon7/temp3_input"
+    ],
+    "warning-threshold": 50,
+    "critical-threshold": 50,
+    "format": " {temperatureC}°C"
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "󰃜",
+      "󰃛",
+      "󰃞",
+      "󰃝",
+      "󰃟",
+      "󰃠"
+    ],
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "default": [
+        "",
+        "",
+        " "
+      ]
+    },
+    "on-click": "omarchy-launch-audio",
+    "on-click-right": "pamixer -t"
+  },
+  "battery#bat0": {
+    "bat": "BAT0",
+    "interval": 2,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "on-click": "omarchy-menu power",
+    "format": "{icon}  {capacity}%",
+    "format-full": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "battery#bat1": {
+    "bat": "BAT1",
+    "interval": 2,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "on-click": "omarchy-menu power",
+    "format": "{icon}  {capacity}%",
+    "format-full": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  }
+}
