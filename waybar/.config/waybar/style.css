@@ -16,28 +16,26 @@
   font-weight: 500;
 }
 
-
 #workspaces {
   background-color: #414B50;
-  padding: 0.3rem 0.7rem;
-  margin: 5px 3px; 
-  border-radius: 10px; 
+  padding: 3px;
+  margin: 5px 3px;
+  border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   min-width: 0;
   border: none;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   color: @foreground;
-  padding: 3px;
   margin-left: 10px;
 }
 
 #workspaces button {
   color: @foreground;
-  border-radius: 10px; 
+  border-radius: 10px;
   min-width: 20px;
   padding: 0.3rem 0.6rem;
   background: transparent;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1.0);
   border: none;
   outline: none;
 }
@@ -56,24 +54,24 @@
   color: @foreground;
   background-color: #414B50;
   padding: 0.3rem 0.7rem;
-  margin: 5px 3px; 
-  border-radius: 10px; 
+  margin: 5px 3px;
+  border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   min-width: 0;
   border: none;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #clock {
   color: @foreground;
   font-weight: 500;
-  font-size: 14;
+  font-size: 14px;
   background-color: #414B50;
   padding: 0.3rem 0.7rem;
   margin: 5px 0px;
-  border-radius: 10px; 
+  border-radius: 10px;
   border: none;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #bluetooth,
@@ -83,13 +81,13 @@
 #language {
   color: @foreground;
   background-color: #414B50;
-  padding: 0.3rem 0.7rem;
-  margin: 5px 0px; 
+  padding: 0.3rem 0.1rem;
+  margin: 5px 0px;
   border-radius: 0;
   box-shadow: none;
   min-width: 0;
   border: none;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #cpu {
@@ -97,10 +95,9 @@
 }
 
 #language {
-  min-width: 40px;
-  font-size: 14;
-  margin-right: 0px; 
-  color: @foreground;
+  min-width: 50px;
+  font-size: 14px;
+  margin: 5px 0px 5px 5px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -108,17 +105,17 @@
 #battery {
   background-color: #414B50;
   color: #A7C080;
-  padding: 0.3rem 0.7rem;
-  margin: 5px 0px; 
+  padding: 0.3rem 0.5rem;
+  margin: 5px 0px;
   border-radius: 0;
   box-shadow: none;
   min-width: 0;
   border: none;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #battery.bat0 {
-  margin-left: 5px; 
+  margin-left: 5px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -137,38 +134,35 @@
   color: #E67E80;
 }
 
+#pulseaudio {
+  min-width: 70px;
+}
+
 #pulseaudio.muted {
   color: #E67E80;
-  font-size: 16px;
 }
 
 #backlight {
-  color: @foreground;
+  min-width: 70px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
 #network {
-  color: @foreground;
+  min-width: 30px;
 }
 
 #network.disconnected {
   color: #E67E80;
-  font-size: 16px;
 }
 
 #bluetooth {
-  font-size: 16px;
-}
-
-#bluetooth.on {
-  color: @foreground;
+  min-width: 20px;
 }
 
 #bluetooth.connected {
   color: #7FBBB3;
 }
-
 
 tooltip {
   background-color: #414B50;
@@ -180,4 +174,3 @@ tooltip {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   font-size: 12px;
 }
-
