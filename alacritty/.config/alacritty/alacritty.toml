@@ -2,13 +2,17 @@
 TERM = "xterm-256color"
 
 [window]
+title = ""
 padding = { x = 5, y = 5 }
 option_as_alt = "OnlyLeft"
 startup_mode = "Maximized"
 decorations_theme_variant = "Dark"
-opacity = 0.98
+opacity = 0.85
+blur = true
 
 [font]
+size = 15
+
 # normal = { family = "FiraCode Nerd Font", style = "Regular" }
 # bold = { family = "FiraCode Nerd Font", style = "Bold" }
 # italic = { family = "FiraCode Nerd Font", style = "Italic" }
@@ -19,11 +23,8 @@ bold = { family = "JetBrainsMono Nerd Font", style = "SemiBold" }
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
 
-size = 15
-
 [mouse]
 hide_when_typing = true
-
 
 [cursor]
 style = { shape = "Beam", blinking = "Always" }

@@ -2,17 +2,21 @@ maximize = true
 mouse-hide-while-typing = true
 font-size = 15
 background-opacity = 0.98
+background-blur=10
 scrollback-limit = 1000000
 window-save-state = always
 
 split-divider-color = #7fbbb3
 unfocused-split-opacity = 0.5
 
+cursor-style=block
+cursor-style-blink=true
+cursor-color=cell-foreground
+cursor-text=cell-background
+
+
 background = 2D353B
 foreground = D3C6AA
-cursor-color = 56635F
-selection-background = 543A48
-selection-foreground = D3C6AA
 
 palette = 0=#232A2E
 palette = 1=#E67E80
@@ -31,5 +35,6 @@ palette = 13=#514045
 palette = 14=#83C092
 palette = 15=#D3C6AA
 
-config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
+keybind = super+|=new_split:left
+keybind = super+-=new_split:down
 
