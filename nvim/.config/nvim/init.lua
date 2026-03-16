@@ -484,3 +484,15 @@ vim.pack.add({
 })
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+vim.pack.add({
+	{ src = "git@github.com:nickjvandyke/opencode.nvim.git" },
+})
+
+local opencode = require("opencode")
+
+vim.g.opencode_opts = {}
+
+vim.keymap.set({ "n", "x" }, "goa", function() opencode.ask("@this: ", { submit = true }) end, { desc = "Ask opencode…" })
+vim.keymap.set({ "n", "x" }, "goe", function() opencode.select() end, { desc = "Execute opencode action…" })
+vim.keymap.set({ "n", "x" }, "gor", function() return opencode.operator("@this ") end, { desc = "Add range to opencode", expr = true })
