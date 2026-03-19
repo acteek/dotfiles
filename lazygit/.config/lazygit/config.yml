@@ -1,0 +1,37 @@
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+gui:
+  nerdFontsVersion: "3"
+  theme:
+    activeBorderColor:
+      - "#a7c080" # green
+      - bold
+    inactiveBorderColor:
+      - "#859289" # grey
+    optionsTextColor:
+      - "#7fbbb3" # aqua
+    selectedLineBgColor:
+      - "#374145" # bg highlight
+    cherryPickedCommitBgColor:
+      - "#3c4841"
+    cherryPickedCommitFgColor:
+      - "#e69875" # orange
+    unstagedChangesColor:
+      - "#e67e80" # red
+    defaultFgColor:
+      - "#d3c6aa" # foreground
+    searchingActiveBorderColor:
+      - "#dbbc7f" # yellow
+  authorColors:
+    "*": "#7fbbb3"
+  spinner:
+    frames:
+      - "⠋"
+      - "⠙"
+      - "⠹"
+      - "⠸"
+      - "⠼"
+      - "⠴"
+      - "⠦"
+      - "⠧"
+      - "⠇"
+      - "⠏"
