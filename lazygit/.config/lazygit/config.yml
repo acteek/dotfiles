@@ -35,3 +35,8 @@ gui:
       - "⠧"
       - "⠇"
       - "⠏"
+git:
+  mainBranches:
+    - master
+    - main
+    - develop
