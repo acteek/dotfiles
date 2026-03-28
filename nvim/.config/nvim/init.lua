@@ -87,7 +87,6 @@ vim.api.nvim_create_autocmd("FileType", {
 -- LSP setup
 -- Extend LSP configs for nvim-lspconfig plugin
 vim.lsp.config("lua_ls", {
-	root_markers = { "lazy-lock.json" },
 	settings = {
 		Lua = {
 			workspace = {
@@ -106,8 +105,25 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
+
 vim.lsp.config("metals", {
-	filetypes = { "scala", "sbt", "java" },
+	filetypes = { "scala", "sbt" },
+})
+
+vim.lsp.config("jdtls", {
+	settings = {
+		java = {
+			configuration = {
+				runtimes = {
+					{
+						name = "JavaSE-21",
+						path = "$HOME/.local/share/mise/installs/java/21",
+						default = true,
+					},
+				},
+			},
+		},
+	},
 })
 
 vim.lsp.enable({
@@ -119,6 +135,7 @@ vim.lsp.enable({
 	"yamlls",
 	"metals",
 	"kotlin_lsp",
+	"jdtls",
 })
 
 --  LSP code actions
@@ -153,6 +170,7 @@ vim.pack.add({
 	{ src = "git@github.com:nvim-tree/nvim-web-devicons.git" },
 	{ src = "git@github.com:nvim-lua/plenary.nvim.git" },
 	{ src = "git@github.com:neovim/nvim-lspconfig.git" },
+	{ src = "git@github.com:dimtion/guttermarks.nvim" },
 })
 
 vim.keymap.set("n", "<leader>p", vim.pack.update, { desc = "Update dashboard" })
@@ -260,6 +278,7 @@ require("mason-lspconfig").setup({
 		"yamlls",
 		"kotlin_lsp",
 		"copilot",
+		"jdtls",
 	},
 })
 
@@ -355,11 +374,7 @@ local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	sources = {
-		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettier,
-		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.goimports_reviser,
-		null_ls.builtins.formatting.golines,
 		null_ls.builtins.formatting.buf,
 		null_ls.builtins.formatting.black,
 	},
@@ -368,14 +383,6 @@ null_ls.setup({
 			vim.api.nvim_clear_autocmds({
 				group = augroup,
 				buffer = bufnr,
-			})
-			-- formating on save
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = augroup,
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr, id = client.id, timeout_ms = 1000 })
-				end,
 			})
 		end
 	end,
@@ -485,20 +492,37 @@ vim.pack.add({
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
+-- OpenCode
 vim.pack.add({
 	{ src = "git@github.com:nickjvandyke/opencode.nvim.git" },
 })
 
 local opencode = require("opencode")
-
-vim.g.opencode_opts = {}
-
-vim.keymap.set({ "n", "x" }, "goa", function()
+local opencodeAsk = function()
 	opencode.ask("@this: ", { submit = true })
-end, { desc = "Ask opencode…" })
-vim.keymap.set({ "n", "x" }, "goe", function()
-	opencode.select()
-end, { desc = "Execute opencode action…" })
-vim.keymap.set({ "n", "x" }, "gor", function()
-	return opencode.operator("@this ")
-end, { desc = "Add range to opencode", expr = true })
+end
+
+vim.keymap.set({ "n", "x" }, "goa", opencodeAsk, { desc = "Ask…" })
+vim.keymap.set({ "n", "x" }, "goe", opencode.select, { desc = "Execute action…" })
+
+-- Java Stuff
+vim.pack.add({
+	{ src = "git@github.com:JavaHello/spring-boot.nvim.git" },
+	{ src = "git@github.com:MunifTanjim/nui.nvim.git" },
+	{ src = "git@github.com:nvim-java/nvim-java.git" },
+})
+
+require("java").setup({
+	java_test = {
+		enable = false,
+	},
+	java_debug_adapter = {
+		enable = false,
+	},
+	jdk = {
+		auto_install = false,
+	},
+	spring_boot_tools = {
+		enable = true,
+	},
+})
