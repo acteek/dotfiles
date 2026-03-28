@@ -17,6 +17,10 @@
       "rev": "6d87d5b8b0d178f75ee047a04f11c5b172fa705a",
       "src": "git@github.com:claydugo/browsher.nvim.git"
     },
+    "conform.nvim": {
+      "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
+      "src": "git@github.com:stevearc/conform.nvim.git"
+    },
     "everforest-nvim": {
       "rev": "323e7633034a8068636a11597cec03bca5465c50",
       "src": "git@github.com:neanias/everforest-nvim.git"
@@ -53,29 +57,17 @@
       "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
       "src": "git@github.com:williamboman/mason.nvim.git"
     },
-    "none-ls-extras.nvim": {
-      "rev": "c6fa39ac52814182c05552cb5d3750cae23ff0f0",
-      "src": "git@github.com:nvimtools/none-ls-extras.nvim.git"
-    },
     "nui.nvim": {
       "rev": "de740991c12411b663994b2860f1a4fd0937c130",
-      "src": "https://github.com/MunifTanjim/nui.nvim"
-    },
-    "null-ls": {
-      "rev": "c9317c2a8629d4e39e7cf47be74cb67f3ab37cda",
-      "src": "git@github.com:nvimtools/none-ls.nvim.git"
+      "src": "git@github.com:MunifTanjim/nui.nvim.git"
     },
     "nvim-autopairs": {
       "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
       "src": "git@github.com:windwp/nvim-autopairs.git"
     },
-    "nvim-dap": {
-      "rev": "2a8799ad91a1495c6bdf753f9b2179b3ff0f5bba",
-      "src": "https://github.com/mfussenegger/nvim-dap"
-    },
     "nvim-java": {
       "rev": "602a5f7fa92f9c1d425a2159133ff9de86842f0a",
-      "src": "https://github.com/nvim-java/nvim-java"
+      "src": "git@github.com:nvim-java/nvim-java.git"
     },
     "nvim-lspconfig": {
       "rev": "702f69fb167e9119f14adc4dfd4fcadf4d1b07a0",
@@ -103,7 +95,7 @@
       "src": "git@github.com:navarasu/onedark.nvim.git"
     },
     "opencode.nvim": {
-      "rev": "5067c80ee1f37b5f8a54244e184df44944175a84",
+      "rev": "4f4ff2c2a4bd979bf8f20a90e44be1b86855cfea",
       "src": "git@github.com:nickjvandyke/opencode.nvim.git"
     },
     "plenary.nvim": {

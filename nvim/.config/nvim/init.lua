@@ -142,7 +142,6 @@ vim.lsp.enable({
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
 vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code action" })
 vim.keymap.set("n", "cr", vim.lsp.buf.rename, { desc = "Code Rename" })
-vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code format" })
 -- Moving and searching
 vim.keymap.set("n", "<M-j>", "<cmd>m +1<cr>", { desc = "Move line down" })
 vim.keymap.set("n", "<M-k>", "<cmd>m -2<cr>", { desc = "Move line up" })
@@ -364,28 +363,27 @@ require("oil").setup({
 
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Oil: Open file in browser" })
 
--- None-ls
+-- Conform formaters
 vim.pack.add({
-	{ src = "git@github.com:nvimtools/none-ls.nvim.git", name = "null-ls" },
-	{ src = "git@github.com:nvimtools/none-ls-extras.nvim.git" },
+	{ src = "git@github.com:stevearc/conform.nvim.git" },
 })
 
-local null_ls = require("null-ls")
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.prettier,
-		null_ls.builtins.formatting.buf,
-		null_ls.builtins.formatting.black,
+local conform = require("conform")
+vim.keymap.set("n", "cf", conform.format, { desc = "Code format" })
+conform.setup({
+	format_on_save = {
+		timeout_ms = 2000,
+		lsp_format = "fallback",
 	},
-	on_attach = function(client, bufnr)
-		if client:supports_method("textDocument/formatting") then
-			vim.api.nvim_clear_autocmds({
-				group = augroup,
-				buffer = bufnr,
-			})
-		end
-	end,
+	formatters_by_ft = {
+		go = { "goimports", "gofmt" },
+		lua = { "stylua" },
+		python = { "black" },
+		typescript = { "prettier" },
+	},
+	default_format_opts = {
+		lsp_format = "fallback",
+	},
 })
 
 -- Blink completion
