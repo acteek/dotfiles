@@ -9,7 +9,7 @@ fi
 [ -r ~/.job-stuff.zsh ] && source ~/.job-stuff.zsh
 
 eval "$(starship init zsh)"
-source <(fzf --zsh)
+# source <(fzf --zsh)
 
 export CLICOLOR=1
 export EDITOR=nvim
