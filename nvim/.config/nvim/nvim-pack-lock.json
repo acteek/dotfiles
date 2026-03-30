@@ -45,6 +45,10 @@
       "rev": "9063915df8e5067c2f1e6263c40392624bcd2744",
       "src": "git@github.com:dimtion/guttermarks.nvim"
     },
+    "lazygit.nvim": {
+      "rev": "a04ad0dbc725134edbee3a5eea29290976695357",
+      "src": "git@github.com:kdheepak/lazygit.nvim.git"
+    },
     "lualine.nvim": {
       "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
       "src": "git@github.com:nvim-lualine/lualine.nvim.git"

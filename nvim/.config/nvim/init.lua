@@ -323,7 +323,6 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
 vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
 vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, {})
-vim.keymap.set("n", "<leader>gg", builtin.git_branches, {})
 vim.keymap.set("n", "<leader><leader>", builtin.find_files, {})
 
 telescope.load_extension("zf-native")
@@ -511,3 +510,10 @@ require("java").setup({
 		enable = true,
 	},
 })
+
+-- LazyGit
+vim.pack.add({
+	{ src = "git@github.com:kdheepak/lazygit.nvim.git" },
+})
+
+vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit)
