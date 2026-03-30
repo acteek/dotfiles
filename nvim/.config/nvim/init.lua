@@ -189,19 +189,6 @@ vim.pack.add({
 	{ src = "git@github.com:MeanderingProgrammer/treesitter-modules.nvim.git" },
 })
 
--- local parsers = { "typescript", "javascript", "python", "go", "yaml", "java", "scala", "sbt", "json" }
-
--- require("nvim-treesitter").install(parsers)
-
--- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
--- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
--- vim.api.nvim_create_autocmd("FileType", {
--- 	pattern = parsers,
--- 	callback = function()
--- 		vim.treesitter.start()
--- 	end,
--- })
-
 require("treesitter-modules").setup({
 	incremental_selection = {
 		enable = true,
@@ -472,7 +459,7 @@ require("browsher").setup({
 		},
 	},
 })
--- Open from the latest commit, the recommended default operation
+
 vim.keymap.set("n", "<leader>B", "<cmd>Browsher commit<cr>", { silent = true })
 vim.keymap.set("v", "<leader>B", ":'<,'>Browsher commit<cr>gv", { silent = true })
 
