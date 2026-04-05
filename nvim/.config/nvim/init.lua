@@ -48,6 +48,9 @@ vim.diagnostic.config({
 	},
 })
 
+-- Enable new UI
+require("vim._core.ui2").enable({})
+
 -- Auto cmds
 -- Highlight the yanked text for 200ms
 local highlight_yank_group = vim.api.nvim_create_augroup("HighlightYank", {})
@@ -178,15 +181,6 @@ vim.pack.add({
 })
 
 vim.keymap.set("n", "<leader>p", vim.pack.update, { desc = "Update dashboard" })
-vim.keymap.set("n", "<leader>P", function()
-	local data = vim.pack.get()
-	local plugins = {}
-	for _, plugin in ipairs(data) do
-		local name = plugin.spec.name
-		table.insert(plugins, name)
-	end
-	vim.pack.update(plugins, { force = true })
-end, { desc = "Force update all plugins" })
 
 -- Treesitter
 vim.pack.add({

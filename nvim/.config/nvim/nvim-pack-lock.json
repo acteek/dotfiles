@@ -30,7 +30,7 @@
       "src": "git@github.com:rafamadriz/friendly-snippets.git"
     },
     "gitsigns.nvim": {
-      "rev": "0f00d07c2c3106ba6abd594ac1c17f211141b7b5",
+      "rev": "f2ce545601fdeb755e91470b25a55705639586a4",
       "src": "git@github.com:lewis6991/gitsigns.nvim.git"
     },
     "gruvbox-material": {
