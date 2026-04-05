@@ -23,7 +23,6 @@ vim.opt.clipboard:append("unnamedplus") -- Use system clipboard
 vim.opt.iskeyword:append("-") -- Treat dash as part of a word
 vim.opt.undofile = true -- Persistent undo
 vim.opt.autoread = true -- Auto-reload file if changed outside
-vim.opt.foldmethod = "expr" -- Use expression for folding
 vim.opt.foldlevel = 99 -- Keep all folds open by default
 vim.opt.splitbelow = true -- Horizontal splits open below
 vim.opt.splitright = true -- Vertical splits open to the right
@@ -163,6 +162,12 @@ vim.keymap.set("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc =
 vim.keymap.set("n", "<leader>q", "<cmd>cclose<cr>", { desc = "Close Quick list" })
 vim.keymap.set("n", "q:", "<Nop>")
 
+-- BuildIn plugins
+vim.cmd.packadd("nvim.undotree")
+vim.cmd.packadd("nvim.tohtml")
+vim.cmd.packadd("nvim.difftool")
+vim.keymap.set("n", "<leader>u", vim.cmd.Undotree)
+
 -- Plugins configuration
 -- Common
 vim.pack.add({
@@ -186,26 +191,32 @@ end, { desc = "Force update all plugins" })
 -- Treesitter
 vim.pack.add({
 	{ src = "git@github.com:nvim-treesitter/nvim-treesitter.git", version = "main" },
-	{ src = "git@github.com:MeanderingProgrammer/treesitter-modules.nvim.git" },
 })
 
-require("treesitter-modules").setup({
-	incremental_selection = {
-		enable = true,
-		keymaps = {
-			node_incremental = "v",
-			node_decremental = "V",
-		},
-	},
-	auto_install = true,
-	fold = {
-		enable = true,
-	},
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false,
-	},
-	indent = { enable = true },
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("treesitter.setup", {}),
+	callback = function(args)
+		local filetype = args.match
+		local buf = args.buf
+		local lang = vim.treesitter.language.get_lang(filetype) or filetype
+
+		if vim.treesitter.language.add(lang) then
+			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+			vim.wo.foldmethod = "expr"
+
+			vim.treesitter.start(buf, lang)
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		local name, kind = ev.data.spec.name, ev.data.kind
+		if name == "nvim-treesitter" and kind == "update" then
+			vim.cmd("TSUpdate")
+		end
+	end,
 })
 
 -- Colorscheme
@@ -468,13 +479,6 @@ vim.pack.add({
 })
 
 require("nvim-autopairs").setup({ check_ts = true })
-
--- UndoTree
-vim.pack.add({
-	{ src = "git@github.com:mbbill/undotree.git" },
-})
-
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- OpenCode
 vim.pack.add({
