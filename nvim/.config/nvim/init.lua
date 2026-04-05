@@ -192,6 +192,19 @@ end, { desc = "Force update all plugins" })
 vim.pack.add({
 	{ src = "git@github.com:nvim-treesitter/nvim-treesitter.git", version = "main" },
 })
+-- ensure installed
+require("nvim-treesitter").install({
+	"java",
+	"scala",
+	"javascript",
+	"typescript",
+	"kotlin",
+	"python",
+	"go",
+	"rust",
+	"yaml",
+	"proto",
+})
 
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("treesitter.setup", {}),
