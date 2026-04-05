@@ -226,22 +226,19 @@ vim.api.nvim_create_autocmd("PackChanged", {
 	end,
 })
 
--- incremental selection treesitter/lsp
+-- incremental selection
+local ts_select = require("vim.treesitter._select")
 vim.keymap.set({ "n", "x", "o" }, "<A-o>", function()
-	if vim.treesitter.get_parser(nil, nil, { error = false }) then
-		require("vim.treesitter._select").select_parent(vim.v.count1)
-	else
-		vim.lsp.buf.selection_range(vim.v.count1)
+	if vim.treesitter.get_parser() then
+		ts_select.select_parent(vim.v.count1)
 	end
-end, { desc = "Select parent treesitter node or outer incremental lsp selections" })
+end, { desc = "Select parent treesitter node" })
 
 vim.keymap.set({ "n", "x", "o" }, "<A-i>", function()
-	if vim.treesitter.get_parser(nil, nil, { error = false }) then
-		require("vim.treesitter._select").select_child(vim.v.count1)
-	else
-		vim.lsp.buf.selection_range(-vim.v.count1)
+	if vim.treesitter.get_parser() then
+		ts_select.select_child(vim.v.count1)
 	end
-end, { desc = "Select child treesitter node or inner incremental lsp selections" })
+end, { desc = "Select child treesitter node" })
 
 -- Colorscheme
 vim.pack.add({
