@@ -6,6 +6,7 @@ vim.opt.swapfile = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
+vim.opt.colorcolumn = "100"
 vim.opt.linebreak = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
@@ -500,19 +501,6 @@ vim.pack.add({
 })
 
 require("nvim-autopairs").setup({ check_ts = true })
-
--- OpenCode
-vim.pack.add({
-	{ src = "git@github.com:nickjvandyke/opencode.nvim.git" },
-})
-
-local opencode = require("opencode")
-local opencodeAsk = function()
-	opencode.ask("@this: ", { submit = true })
-end
-
-vim.keymap.set({ "n", "x" }, "goa", opencodeAsk, { desc = "Ask…" })
-vim.keymap.set({ "n", "x" }, "goe", opencode.select, { desc = "Execute action…" })
 
 -- Java Stuff
 vim.pack.add({
