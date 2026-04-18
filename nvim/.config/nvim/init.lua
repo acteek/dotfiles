@@ -119,8 +119,8 @@ vim.lsp.config("jdtls", {
 			configuration = {
 				runtimes = {
 					{
-						name = "JavaSE-21",
-						path = "$HOME/.local/share/mise/installs/java/21",
+						name = "Java-25",
+						path = "$HOME/.local/share/mise/installs/java/25",
 						default = true,
 					},
 				},
