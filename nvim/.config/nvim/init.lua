@@ -253,16 +253,6 @@ require("everforest").setup({
 })
 vim.cmd.colorscheme("everforest")
 
--- Alpha dashboard
-vim.pack.add({
-	{ src = "git@github.com:goolord/alpha-nvim.git" },
-})
-
-local alpha = require("alpha")
-local dashboard = require("alpha.themes.startify")
-dashboard.file_icons.provider = "devicons"
-alpha.setup(dashboard.config)
-
 -- Lualine
 vim.pack.add({
 	{ src = "git@github.com:nvim-lualine/lualine.nvim.git" },
