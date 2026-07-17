@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+PROJECT_ENVS=("$HOME/develop/GLIP" "$HOME/develop/AVA")
+
+shopt -s nullglob
+
+# Create default session if not exist 
+if tmux has-session -t "default" 2>/dev/null; then
+  echo "Session home already exists. Skipping..."
+else
+  tmux new-session -d -s "default" -x- -y- -n "console" -c "$HOME"
+  tmux new-window -t "default" -n "jira" 
+  tmux new-window -t "default" -n "k9s" 
+
+  tmux send-keys -t "default:jira.1" jira-dash Enter
+  tmux send-keys -t "default:k9s.1" k9s Enter
+  tmux select-window -t "default:console"
+fi
+
+# Create sessions for projects
+for ENV in "${PROJECT_ENVS[@]}"; do
+  if [[ ! -d "$ENV" ]]; then
+    echo "Project directory $ENV does not exist. Skipping..." >&2
+    continue
+  fi
+
+  for PROJECT_DIR in "$ENV"/*/; do
+    PROJECT="${PROJECT_DIR%/}"
+    PROJECT="${PROJECT##*/}"
+    if tmux has-session -t "$PROJECT" 2>/dev/null; then
+      echo "Session $PROJECT already exists. Skipping..."
+      continue
+    fi
+    echo "Creating session for project: $PROJECT"
+    tmux new-session -d -s "$PROJECT" -x- -y- -n "nvim" -c "$PROJECT_DIR"
+  done
+done
+tmux attach -t "default"
