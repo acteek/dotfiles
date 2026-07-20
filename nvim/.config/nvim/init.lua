@@ -190,6 +190,7 @@ vim.pack.add({
 require("nvim-treesitter").install({
 	"java",
 	"scala",
+	"json",
 	"javascript",
 	"typescript",
 	"kotlin",
@@ -198,6 +199,8 @@ require("nvim-treesitter").install({
 	"rust",
 	"yaml",
 	"proto",
+	"groovy",
+	"jsonnet",
 })
 
 vim.api.nvim_create_autocmd("FileType", {

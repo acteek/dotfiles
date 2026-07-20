@@ -10,7 +10,7 @@
       "version": "1.0.0 - 2.0.0"
     },
     "browsher.nvim": {
-      "rev": "6d87d5b8b0d178f75ee047a04f11c5b172fa705a",
+      "rev": "96a046b438ccd27d8eedc1ed7b1af2ab65b6a813",
       "src": "git@github.com:claydugo/browsher.nvim.git"
     },
     "conform.nvim": {
@@ -26,7 +26,7 @@
       "src": "git@github.com:rafamadriz/friendly-snippets.git"
     },
     "gitsigns.nvim": {
-      "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
+      "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
       "src": "git@github.com:lewis6991/gitsigns.nvim.git"
     },
     "gruvbox-material": {
@@ -50,7 +50,7 @@
       "src": "git@github.com:nvim-lualine/lualine.nvim.git"
     },
     "mason-lspconfig.nvim": {
-      "rev": "21c5b3ebeaa0412e28096bb0701434c51c1fbf76",
+      "rev": "7adc933dabcc7c86ae6b07aff7ee68eac398491f",
       "src": "git@github.com:williamboman/mason-lspconfig.nvim.git"
     },
     "mason.nvim": {
@@ -66,20 +66,20 @@
       "src": "git@github.com:windwp/nvim-autopairs.git"
     },
     "nvim-java": {
-      "rev": "f36a376dfebbbb4cf382008ea6e8b70d40049112",
+      "rev": "9e8b842ea9eff3ebf25fb7360908ed4d4f87c56a",
       "src": "git@github.com:nvim-java/nvim-java.git"
     },
     "nvim-lspconfig": {
-      "rev": "96f363ce07d46c1804532ca2d1eb3a157d11ee29",
+      "rev": "e7ca2c95ba316a8b846d3f3546d407908c5c4ccb",
       "src": "git@github.com:neovim/nvim-lspconfig.git"
     },
     "nvim-treesitter": {
-      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "rev": "7248feaca45e4d944591497964bc19afa89ad1c6",
       "src": "git@github.com:nvim-treesitter/nvim-treesitter.git",
       "version": "'main'"
     },
     "nvim-web-devicons": {
-      "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
+      "rev": "0ca28b61a04fe7426cefbdd52c2647ef0e335b5f",
       "src": "git@github.com:nvim-tree/nvim-web-devicons.git"
     },
     "oil.nvim": {
