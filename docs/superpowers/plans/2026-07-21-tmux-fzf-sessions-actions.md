@@ -32,7 +32,7 @@ tmux list-sessions -F '#S' | fzf \
   --bind 'enter:become(tmux switch-client -t {})' \
   --bind 'ctrl-y:become(tmux switch-client -t {})' \
   --bind 'ctrl-x:execute(tmux kill-session -t {})+reload(tmux list-sessions -F "#S")' \
-  --bind 'ctrl-n:execute(if [ -n {q} ]; then tmux new-session -d -s {q}; tmux switch-client -t {q}; fi)' \
+  --bind 'ctrl-n:execute(if [ -n {q} ]; then tmux new-session -d -s {q} && tmux switch-client -t {q}; fi)' \
   --layout reverse --cycle
 ```
 
