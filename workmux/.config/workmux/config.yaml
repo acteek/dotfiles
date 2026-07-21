@@ -1,0 +1,24 @@
+nerdfont: true
+worktree_dir: ~/develop/worktrees/{project}/
+theme:
+  mode: dark
+  custom:
+    current_row_bg: "#425047"
+    highlight_row_bg: "#3d484d"
+    current_worktree_fg: "#a7c080"
+    dimmed: "#859289"
+    text: "#d3c6aa"
+    border: "#4f585e"
+    help_border: "#475258"
+    help_muted: "#7a8478"
+    header: "#a7c080"
+    keycap: "#7fbbb3"
+    info: "#83c092"
+    success: "#a7c080"
+    warning: "#dbbc7f"
+    danger: "#e67e80"
+    accent: "#7fbbb3"
+panes:
+  - command: codex
+    focus: true
+  - split: horizontal

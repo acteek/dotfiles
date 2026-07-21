@@ -1,0 +1,7 @@
+workmux ls --json | jq -r '.[].handle' | fzf \
+  --bind 'enter:become(workmux open {})' \
+  --bind 'ctrl-y:become(workmux open {})' \
+  --bind 'ctrl-x:execute(workmux rm {})+reload(workmux ls --json | jq -r ".[].handle")' \
+  --bind 'ctrl-o:execute(if [ -n {q} ]; then workmux add {q}; fi)+reload(workmux ls --json | jq -r ".[].handle")+clear-query' \
+  --layout reverse \
+  --cycle
