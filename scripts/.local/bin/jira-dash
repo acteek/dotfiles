@@ -13,14 +13,14 @@ eval "$JIRA_CMD" | fzf \
 --multi \
 --cycle \
 --preview 'printf "\033[2J\n"; jira issue view {1} --plain' \
---bind 'O:execute-silent(jira open {1}; tmux display-message "Opening in browser..." )' \
---bind 'Y:execute-silent(echo -n {1} | pbcopy; tmux display-message "Key copied to clipboard")' \
---bind 'M:execute-silent(tmux popup -T "Move issue"  -E -h 30% -w 30% jira issue move {1})+reload(eval "$JIRA_CMD")' \
---bind 'E:execute-silent(tmux popup -T "Edit issue" -E -h 80% -w 80% jira issue edit {1})+reload(eval "$JIRA_CMD")' \
---bind 'P:execute-silent(tmux popup -T "Paste comment" -E -h 80% -w 80% jira issue comment add {1})' \
---bind 'V:execute-silent(tmux popup -T "View issue" -E -h 80% -w 80% jira issue view {1} --comments 5)' \
---bind 'A:execute-silent(tmux popup -T "Assign issue" -E -h 30% -w 30% jira issue assign {1})+reload(eval "$JIRA_CMD")' \
---bind 'S:execute-silent(jira issue assign {1} $(jira me))+reload(eval "$JIRA_CMD")' \
---bind 'L:execute-silent(tmux popup -T "Link issues" -E -h 30% -w 30%  jira issue link {+1} )' \
---bind 'N:execute-silent(tmux popup -T "New issue" -E -h 80% -w 80% jira issue create -tTask --custom team="Pioneer")+reload(eval "$JIRA_CMD")' \
---bind 'R:reload(eval "$JIRA_CMD")' 
+--bind 'alt-o:execute-silent(jira open {1}; tmux display-message "Opening in browser..." )' \
+--bind 'alt-y:execute-silent(echo -n {1} | pbcopy; tmux display-message "Key copied to clipboard")' \
+--bind 'alt-m:execute-silent(tmux popup -T "Move issue"  -E -h 30% -w 30% jira issue move {1})+reload(eval "$JIRA_CMD")' \
+--bind 'alt-e:execute-silent(tmux popup -T "Edit issue" -E -h 80% -w 80% jira issue edit {1})+reload(eval "$JIRA_CMD")' \
+--bind 'alt-p:execute-silent(tmux popup -T "Paste comment" -E -h 80% -w 80% jira issue comment add {1})' \
+--bind 'alt-v:execute-silent(tmux popup -T "View issue" -E -h 80% -w 80% jira issue view {1} --comments 5)' \
+--bind 'alt-a:execute-silent(tmux popup -T "Assign issue" -E -h 30% -w 30% jira issue assign {1})+reload(eval "$JIRA_CMD")' \
+--bind 'alt-s:execute-silent(jira issue assign {1} $(jira me))+reload(eval "$JIRA_CMD")' \
+--bind 'alt-l:execute-silent(tmux popup -T "Link issues" -E -h 30% -w 30%  jira issue link {+1} )' \
+--bind 'alt-n:execute-silent(tmux popup -T "New issue" -E -h 80% -w 80% jira issue create -tTask --custom team="Pioneer")+reload(eval "$JIRA_CMD")' \
+--bind 'alt-r:reload(eval "$JIRA_CMD")' 
