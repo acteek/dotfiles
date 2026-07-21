@@ -32,8 +32,11 @@ for ENV in "${PROJECT_ENVS[@]}"; do
       continue
     fi
     echo "Creating session for project: $PROJECT"
-    tmux new-session -d -s "$PROJECT" -x- -y- -n "nvim" -c "$PROJECT_DIR"
-    tmux send-keys -t "$PROJECT:nvim.1" nvim Enter
+    tmux new-session -d -s "$PROJECT" -x- -y- -n "main" -c "$PROJECT_DIR"
+    tmux split-window -t "$PROJECT:main" -h -c "$PROJECT_DIR"
+    tmux select-pane -t "$PROJECT:main.1" 
+    tmux send-keys -t "$PROJECT:main.1" nvim Enter
   done
 done
+
 tmux attach -t "default"
