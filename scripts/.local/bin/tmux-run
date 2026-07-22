@@ -39,9 +39,12 @@ for ENV in "${PROJECT_ENVS[@]}"; do
     fi
     echo "Creating session for project: $PROJECT"
     tmux new-session -d -s "$PROJECT" -x- -y- -n "main" -c "$PROJECT_DIR"
-    tmux split-window -t "$PROJECT:main" -h -c "$PROJECT_DIR"
-    tmux select-pane -t "$PROJECT:main.1" 
+    tmux split-window -t "$PROJECT:main.1" -h -c "$PROJECT_DIR"
+    tmux split-window -t "$PROJECT:main.2" -v -c "$PROJECT_DIR"
     tmux send-keys -t "$PROJECT:main.1" nvim Enter
+    tmux send-keys -t "$PROJECT:main.2" "codex resume --last" Enter
+    tmux resize-pane -t "$PROJECT:main.1" -R 10
+    tmux select-pane -t "$PROJECT:main.1" 
   done
 done
 
