@@ -8,7 +8,7 @@ export JIRA_CMD="jira issue list -q\"$JIRA_Q\" --updated -30d --plain --columns 
 eval "$JIRA_CMD" | fzf \
 --reverse \
 --preview-window up,25 \
---footer=$'(R)eload | (N)ew | (O)pen | (E)dit | (M)ove | (A)ssign | (S)elf assign | (L)ink | (P)aste comment | (Y)ank key | (V)eiw | (C)lose \n' \
+--footer=$'(R)eload | (N)ew | (O)pen | (E)dit | (M)ove | (A)ssign | (S)elf assign | (L)ink | (P)aste comment | (Y)ank key | (C)lose \n' \
 --header-lines=1 \
 --multi \
 --cycle \
@@ -18,7 +18,7 @@ eval "$JIRA_CMD" | fzf \
 --bind 'alt-m:execute-silent(tmux popup -T "Move issue"  -E -h 30% -w 30% jira issue move {1})+reload(eval "$JIRA_CMD")' \
 --bind 'alt-e:execute-silent(tmux popup -T "Edit issue" -E -h 80% -w 80% jira issue edit {1})+reload(eval "$JIRA_CMD")' \
 --bind 'alt-p:execute-silent(tmux popup -T "Paste comment" -E -h 80% -w 80% jira issue comment add {1})' \
---bind 'alt-v:execute-silent(tmux popup -T "View issue" -E -h 80% -w 80% jira issue view {1} --comments 5)' \
+--bind 'enter:execute-silent(tmux popup -T "View issue" -E -h 80% -w 80% jira issue view {1} --comments 5)' \
 --bind 'alt-a:execute-silent(tmux popup -T "Assign issue" -E -h 30% -w 30% jira issue assign {1})+reload(eval "$JIRA_CMD")' \
 --bind 'alt-s:execute-silent(jira issue assign {1} $(jira me))+reload(eval "$JIRA_CMD")' \
 --bind 'alt-l:execute-silent(tmux popup -T "Link issues" -E -h 30% -w 30%  jira issue link {+1} )' \
