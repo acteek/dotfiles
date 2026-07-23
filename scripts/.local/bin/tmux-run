@@ -17,9 +17,11 @@ else
   tmux new-session -d -s "default" -x- -y- -n "console" -c "$HOME"
   tmux new-window -t "default" -n "jira" 
   tmux new-window -t "default" -n "k9s" 
+  tmux new-window -t "default" -n "sqlit" 
 
   tmux send-keys -t "default:jira.1" jira-dash Enter
   tmux send-keys -t "default:k9s.1" k9s Enter
+  tmux send-keys -t "default:sqlit.1" sqlit Enter
   tmux select-window -t "default:console"
 fi
 
