@@ -288,7 +288,6 @@ require("mason-lspconfig").setup({
 		"pyright",
 		"yamlls",
 		"kotlin_lsp",
-		"copilot",
 		"jdtls",
 	},
 })
