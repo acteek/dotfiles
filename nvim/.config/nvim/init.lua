@@ -165,6 +165,10 @@ vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear highlight" })
 vim.keymap.set("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 vim.keymap.set("n", "<leader>q", "<cmd>cclose<cr>", { desc = "Close Quick list" })
 vim.keymap.set("n", "q:", "<Nop>")
+vim.keymap.set("n", "<leader>cp", function()
+	vim.fn.setreg("+", vim.fn.expand("%"))
+	print("Copied: " .. vim.fn.expand("%"))
+end, { desc = "Copy file path" })
 
 -- BuildIn plugins
 vim.cmd.packadd("nvim.undotree")
@@ -392,6 +396,7 @@ conform.setup({
 		lua = { "stylua" },
 		python = { "black" },
 		typescript = { "prettier" },
+		rust = { "rustfmt" },
 	},
 	default_format_opts = {
 		lsp_format = "fallback",
