@@ -138,6 +138,7 @@ vim.lsp.enable({
 	"metals",
 	"kotlin_lsp",
 	"jdtls",
+	"rust_analyzer",
 })
 
 --  LSP code actions
@@ -293,6 +294,7 @@ require("mason-lspconfig").setup({
 		"yamlls",
 		"kotlin_lsp",
 		"jdtls",
+		"rust_analyzer",
 	},
 })
 
@@ -394,6 +396,7 @@ conform.setup({
 		lua = { "stylua" },
 		python = { "black" },
 		typescript = { "prettier" },
+		rust = { "rustfmt" },
 	},
 	default_format_opts = {
 		lsp_format = "fallback",
