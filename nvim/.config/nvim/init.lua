@@ -138,6 +138,7 @@ vim.lsp.enable({
 	"metals",
 	"kotlin_lsp",
 	"jdtls",
+	"rust_analyzer",
 })
 
 --  LSP code actions
@@ -289,6 +290,7 @@ require("mason-lspconfig").setup({
 		"yamlls",
 		"kotlin_lsp",
 		"jdtls",
+		"rust_analyzer",
 	},
 })
 
