@@ -206,6 +206,7 @@ require("nvim-treesitter").install({
 	"proto",
 	"groovy",
 	"jsonnet",
+	"mermaid",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -529,3 +530,16 @@ vim.pack.add({
 
 vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit)
 vim.keymap.set("n", "<leader>gl", vim.cmd.LazyGitFilter)
+
+-- Mermaid render
+vim.pack.add({
+	{ src = "git@github.com:kais-radwan/ascii-mermaid.git" },
+})
+
+require("ascii-mermaid").setup({
+	auto = false,
+	use_ascii = false,
+	display_mode = "readonly",
+})
+
+vim.keymap.set("n", "<leader>mr", "<cmd>MermaidRender<cr>", { silent = true })

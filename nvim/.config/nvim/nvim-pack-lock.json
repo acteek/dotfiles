@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "ascii-mermaid": {
+      "rev": "a91a0c7baec6392212c59221bc67389bb617feb7",
+      "src": "git@github.com:kais-radwan/ascii-mermaid.git"
+    },
     "blink-copilot": {
       "rev": "7ad8209b2f880a2840c94cdcd80ab4dc511d4f39",
       "src": "git@github.com:fang2hou/blink-copilot.git"
