@@ -555,3 +555,20 @@ require("ascii-mermaid").setup({
 })
 
 vim.keymap.set("n", "<leader>mr", "<cmd>MermaidRender<cr>", { silent = true })
+
+-- Pi inline wrapper
+vim.pack.add({
+	{ src = "git@github.com:pablopunk/pi.nvim.git" },
+})
+
+require("pi").setup({
+	provider = "openai-codex",
+	model = "gpt-5.6-luna",
+	thinking = "low",
+	context = {
+		diagnostics = { enabled = true },
+	},
+})
+
+vim.keymap.set("n", "<leader>ai", "<cmd>PiAsk<cr>", { desc = "Ask pi" })
+vim.keymap.set("x", "<leader>ai", "<cmd>PiAskSelection<cr>", { desc = "Ask pi (selection)" })

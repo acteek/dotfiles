@@ -98,6 +98,10 @@
       "rev": "df4792accde9db0043121f32628bcf8e645d9aea",
       "src": "git@github.com:navarasu/onedark.nvim.git"
     },
+    "pi.nvim": {
+      "rev": "9b619b4f9fb96fa4dc1a6a7776a651980cd819a0",
+      "src": "git@github.com:pablopunk/pi.nvim.git"
+    },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "git@github.com:nvim-lua/plenary.nvim.git"
