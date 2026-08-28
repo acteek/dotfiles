@@ -9,7 +9,9 @@ fi
 [ -r ~/.job-stuff.zsh ] && source ~/.job-stuff.zsh
 
 eval "$(starship init zsh)"
-# source <(fzf --zsh)
+export HISTFILE
+export FZF_CTRL_R_OPTS="--tmux=center,50%,50% --layout=reverse --cycle --border=rounded"
+source <(fzf --zsh)
 
 export CLICOLOR=1
 export EDITOR=nvim
