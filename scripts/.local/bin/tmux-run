@@ -6,6 +6,7 @@ PROJECT_ENVS=(
   "$HOME/develop/NOVA"
   "$HOME/develop/PAS"
   "$HOME/develop/ANL"
+  "$HOME/develop/IVA"
 )
 
 shopt -s nullglob

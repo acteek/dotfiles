@@ -37,24 +37,36 @@ set splitright
 set splitbelow
 set expandtab
 set smarttab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set laststatus=2
 set ruler
 
 set termguicolors
-let g:everforest_background = 'medium'
-let g:everforest_better_performance = 1
-set background=dark
-colorscheme everforest
-"hi Normal guibg=NONE ctermbg=NONE
-"hi NonText guibg=NONE ctermbg=NONE
+colorscheme habamax
+hi Normal guibg=NONE ctermbg=NONE
 
 set path+=**
 set wildignore+=*/node_modules/*
 set wildignore+=*/dist/*
 set completeopt+=longest,menuone,noselect,popup
 let g:netrw_banner = 0
+
+packadd! comment
+packadd! matchit
+
+augroup highlight_yank
+  autocmd!
+  autocmd TextYankPost * call FlashYankedText()
+augroup END
+
+function! FlashYankedText()
+  if v:event.operator ==# 'y'
+    let l:yank_match = matchadd('IncSearch','\v%''\[\_.*%''\]')
+    defer timer_start(200, {-> matchdelete(l:yank_match)})
+  endif
+endfunction
+
 
 nnoremap [b :bnext<cr>
 nnoremap ]b :bprevious<cr>

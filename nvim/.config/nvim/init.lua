@@ -51,6 +51,18 @@ vim.diagnostic.config({
 -- Enable new UI
 require("vim._core.ui2").enable({})
 
+-- Pretty builtin grep
+vim.opt.grepprg = "rg --vimgrep --smart-case --hidden"
+vim.opt.grepformat = "%f:%l:%c:%m"
+vim.keymap.set("n", "<leader>G", function()
+	vim.ui.input({ prompt = "Grep: " }, function(pattern)
+		if pattern then
+			vim.cmd("silent grep! " .. vim.fn.fnameescape(pattern))
+			vim.cmd("copen")
+		end
+	end)
+end, { silent = true })
+
 -- Auto cmds
 -- Highlight the yanked text for 200ms
 local highlight_yank_group = vim.api.nvim_create_augroup("HighlightYank", {})
@@ -206,6 +218,7 @@ require("nvim-treesitter").install({
 	"proto",
 	"groovy",
 	"jsonnet",
+	"mermaid",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -529,3 +542,33 @@ vim.pack.add({
 
 vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit)
 vim.keymap.set("n", "<leader>gl", vim.cmd.LazyGitFilter)
+
+-- Mermaid render
+vim.pack.add({
+	{ src = "git@github.com:kais-radwan/ascii-mermaid.git" },
+})
+
+require("ascii-mermaid").setup({
+	auto = false,
+	use_ascii = false,
+	display_mode = "readonly",
+})
+
+vim.keymap.set("n", "<leader>mr", "<cmd>MermaidRender<cr>", { silent = true })
+
+-- Pi inline wrapper
+vim.pack.add({
+	{ src = "git@github.com:pablopunk/pi.nvim.git" },
+})
+
+require("pi").setup({
+	provider = "openai-codex",
+	model = "gpt-5.6-luna",
+	thinking = "low",
+	context = {
+		diagnostics = { enabled = true },
+	},
+})
+
+vim.keymap.set("n", "<leader>ai", "<cmd>PiAsk<cr>", { desc = "Ask pi" })
+vim.keymap.set("x", "<leader>ai", "<cmd>PiAskSelection<cr>", { desc = "Ask pi (selection)" })
