@@ -36,5 +36,7 @@ palette = 14=#83C092
 palette = 15=#D3C6AA
 
 keybind = super+|=new_split:left
-keybind = super+-=new_split:down
-
+keybind = super+_=new_split:down
+keybind = super+z=toggle_split_zoom
+keybind = super+c=new_tab
+keybind = super+x=close_tab:this
