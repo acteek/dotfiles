@@ -28,4 +28,5 @@ export PATH="$HOME/nvim-macos-arm64/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH" 
 
 alias ps='ps-fzf'
+alias wm='workmux'
 eval "$(~/.local/bin/mise activate zsh)"
