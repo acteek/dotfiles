@@ -11,6 +11,7 @@ fi
 eval "$(starship init zsh)"
 export HISTFILE
 export FZF_CTRL_R_OPTS="--tmux=center,50%,50% --layout=reverse --cycle --border=rounded"
+export FZF_CTRL_T_OPTS="--tmux=center,80%,80% --layout=reverse --cycle --border=rounded --preview='bat --color=always --style=numbers --line-range=:500 {} 2>/dev/null' --preview-window='right:60%:wrap' --prompt='Files> '"
 source <(fzf --zsh)
 
 export CLICOLOR=1

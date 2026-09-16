@@ -1,4 +1,8 @@
 tmux list-sessions -F '#S' | fzf \
+  --ansi \
+  --preview='tmux capture-pane -ep -S -500 -t {}:' \
+  --preview-window='right:60%:nowrap:follow' \
+  --bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down' \
   --bind 'enter:become(tmux switch-client -t {})' \
   --bind 'ctrl-y:become(tmux switch-client -t {})' \
   --bind 'ctrl-x:execute(tmux kill-session -t {})+reload(tmux list-sessions -F "#S")' \
