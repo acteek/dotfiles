@@ -72,10 +72,27 @@ autoload -Uz add-zle-hook-widget add-zsh-hook
 add-zle-hook-widget line-pre-redraw _dotfiles_visual_prompt
 add-zsh-hook precmd _dotfiles_reset_visual_prompt
 
-export HISTFILE
+# Share command history across interactive shells, including tmux panes/sessions.
+export HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+# SHARE_HISTORY handles both appending and importing; these options conflict.
+unsetopt INC_APPEND_HISTORY INC_APPEND_HISTORY_TIME
+setopt SHARE_HISTORY
+
 export FZF_CTRL_R_OPTS="--tmux=center,50%,50% --layout=reverse --cycle --border=rounded"
 export FZF_CTRL_T_OPTS="--tmux=center,80%,80% --layout=reverse --cycle --border=rounded --preview='bat --color=always --style=numbers --line-range=:500 {} 2>/dev/null' --preview-window='right:60%:wrap' --prompt='Files> '"
 source <(fzf --zsh)
+
+# Refresh an idle shell's history before Ctrl-R opens fzf.
+_dotfiles_fzf_history_widget() {
+  [[ -r $HISTFILE ]] && builtin fc -RI
+  zle fzf-history-widget
+}
+zle -N _dotfiles_fzf_history_widget
+bindkey -M emacs '^R' _dotfiles_fzf_history_widget
+bindkey -M viins '^R' _dotfiles_fzf_history_widget
+bindkey -M vicmd '^R' _dotfiles_fzf_history_widget
 
 export CLICOLOR=1
 export EDITOR=nvim
