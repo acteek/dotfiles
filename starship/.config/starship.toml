@@ -8,7 +8,6 @@ $git_branch\
 $git_status\
 $aws\
 $gcloud\
-${custom.gcloud_token}\
 $line_break\
 $os\
 $character"""
@@ -27,7 +26,6 @@ $git_branch\
 $git_status\
 $aws\
 $gcloud\
-${custom.gcloud_token}\
 $line_break\
 $os\
 [VISUAL ❯](bold purple) """
@@ -61,51 +59,11 @@ style = "yellow"
 symbol = "☁️ "
 format = '[$symbol$profile | $region \[$duration\]]($style)'
 
-# Display the active project; the token countdown is shown separately below.
+# Display the active Google Cloud project.
 [gcloud]
 style = "blue"
 symbol = "󱇶 "
 format = '( [${symbol}${project}]($style) )'
-
-# Offline countdown for the cached access token, which gcloud can auto-refresh.
-[custom.gcloud_token]
-command = '''
-dir=${CLOUDSDK_CONFIG:-$HOME/.config/gcloud}
-name=${CLOUDSDK_ACTIVE_CONFIG_NAME:-$(cat "$dir/active_config" 2>/dev/null)}
-config="$dir/configurations/config_${name:-default}"
-property() {
-  awk -F ' *= *' -v section="[$1]" -v key="$2" '
-    { sub(/\r$/, "") }
-    /^\[/ { active = ($0 == section) }
-    active && $1 == key { print $2; exit }
-  ' "$config" 2>/dev/null
-}
-account=${CLOUDSDK_CORE_ACCOUNT:-$(property core account)}
-[ -n "$account" ] || exit 0
-for key in impersonate_service_account credential_file_override access_token access_token_file; do
-  case "$key" in
-    impersonate_service_account) override=${CLOUDSDK_AUTH_IMPERSONATE_SERVICE_ACCOUNT:-$(property auth "$key")} ;;
-    credential_file_override) override=${CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE:-$(property auth "$key")} ;;
-    access_token) override=${CLOUDSDK_AUTH_ACCESS_TOKEN:-$(property auth "$key")} ;;
-    access_token_file) override=${CLOUDSDK_AUTH_ACCESS_TOKEN_FILE:-$(property auth "$key")} ;;
-  esac
-  [ -z "$override" ] || { echo 'unknown'; exit 0; }
-done
-universe=${CLOUDSDK_CORE_UNIVERSE_DOMAIN:-$(property core universe_domain)}
-case "$universe" in ''|googleapis.com) ;; *) account="$account#$universe" ;; esac
-account=$(printf '%s' "$account" | sed "s/'/''/g")
-seconds=$(sqlite3 -readonly "$dir/access_tokens.db" "SELECT unixepoch(token_expiry) - unixepoch('now') FROM access_tokens WHERE account_id = '$account';" 2>/dev/null)
-if [ -z "$seconds" ]; then echo 'unknown'
-elif [ "$seconds" -le 0 ]; then echo 'expired'
-elif [ "$seconds" -lt 60 ]; then echo '<1m'
-elif [ "$seconds" -lt 3600 ]; then echo "$((seconds / 60))m"
-else echo "$((seconds / 3600))h$((seconds / 60 % 60))m"
-fi
-'''
-when = 'command -v sqlite3 >/dev/null 2>&1'
-shell = ["sh"]
-style = "blue"
-format = '([\[$output\]]($style) )'
 
 [os.symbols]
 Ubuntu = "󰕈"
