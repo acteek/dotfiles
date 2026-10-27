@@ -1,5 +1,4 @@
 require("kotlin-lsp-fix")
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.swapfile = false
@@ -555,3 +554,8 @@ require("ascii-mermaid").setup({
 })
 
 vim.keymap.set("n", "<leader>mr", "<cmd>MermaidRender<cr>", { silent = true })
+
+-- Markdown
+vim.pack.add({
+	{ src = "git@github.com:blackhat-7/vellum.nvim.git" },
+})
