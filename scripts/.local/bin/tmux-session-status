@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+"""List tmux sessions with Codex activity and workmux status for the picker."""
+
+from collections import defaultdict
+import os
+import subprocess
+
+
+SPINNER = '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
+
+
+def session_status(panes, processes):
+    pane_pids = {pane['pid'] for pane in panes}
+    codex_pids = set()
+    for pid, (_, command) in processes.items():
+        if os.path.basename(command) != 'codex':
+            continue
+        seen = set()
+        while pid in processes and pid not in seen:
+            if pid in pane_pids:
+                codex_pids.add(pid)
+                break
+            seen.add(pid)
+            pid = processes[pid][0]
+
+    labels = []
+    for pane in panes:
+        if pane['pid'] in codex_pids:
+            # Codex's default activity title is emitted by the actual terminal
+            # client; remote hooks can inherit another client's TMUX_PANE.
+            title = pane['title'].lstrip()
+            if title.startswith(('[ ! ] Action Required', '[ . ] Action Required')):
+                labels.append('💬 waiting')
+            elif title[:1] and title[0] in SPINNER:
+                labels.append('🤖 working')
+            else:
+                labels.append('✓ idle')
+        elif pane['hook']:
+            labels.append(pane['hook'])
+
+    # Show the session's most actionable Codex state, plus other agent statuses.
+    codex_label = next((label for label in ('💬 waiting', '🤖 working', '✓ idle')
+                        if label in labels), None)
+    others = list(dict.fromkeys(label for label in labels
+                               if label not in ('💬 waiting', '🤖 working', '✓ idle')))
+    return ' · '.join(([codex_label] if codex_label else []) + others)
+
+
+def main():
+    def query(*args):
+        return subprocess.check_output(args, text=True, timeout=5).splitlines()
+
+    sessions = query('tmux', 'list-sessions', '-F', '#{session_id}\t#{session_name}')
+    processes = {}
+    for line in query('ps', '-axo', 'pid=,ppid=,comm='):
+        fields = line.split(maxsplit=2)
+        if len(fields) == 3:
+            processes[int(fields[0])] = (int(fields[1]), fields[2])
+
+    panes = defaultdict(list)
+    pane_format = '#{session_id}\t#{pane_pid}\t#{@workmux_pane_status}\t#{@workmux_status}\t#{pane_title}'
+    for line in query('tmux', 'list-panes', '-a', '-F', pane_format):
+        fields = line.split('\t', 4)
+        if len(fields) == 5:
+            session, pid, pane_hook, window_hook, title = fields
+            panes[session].append({'pid': int(pid), 'title': title,
+                                   'hook': pane_hook or window_hook})
+
+    for line in sessions:
+        session, name = line.split('\t', 1)
+        label = session_status(panes[session], processes)
+        # Put status first so long branch names cannot truncate it in fzf.
+        print(f'{session} ' + (f'{label}  ' if label else '') + name)
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        raise SystemExit(1)

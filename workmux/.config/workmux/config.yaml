@@ -1,5 +1,6 @@
 nerdfont: true
 mode: session
+status_format: false # Show job status only in the session picker.
 worktree_dir: ~/develop/worktrees/{project}/
 theme:
   mode: dark
@@ -23,3 +24,4 @@ panes:
   - command: codex
     focus: true
   - split: horizontal
+    percentage: 33

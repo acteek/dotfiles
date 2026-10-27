@@ -1,11 +1,18 @@
-tmux list-sessions -F '#S' | fzf \
+#!/usr/bin/env bash
+
+# Keep the session ID hidden so status icons never become part of a tmux target.
+session_command='tmux-session-status'
+
+$session_command | fzf \
   --ansi \
-  --preview='tmux capture-pane -ep -S -500 -t {}:' \
+  --with-nth=2.. \
+  --preview='tmux capture-pane -ep -S -500 -t {1}:' \
   --preview-window='right:60%:nowrap:follow' \
   --bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down' \
-  --bind 'enter:become(tmux switch-client -t {})' \
-  --bind 'ctrl-y:become(tmux switch-client -t {})' \
-  --bind 'ctrl-x:execute(tmux kill-session -t {})+reload(tmux list-sessions -F "#S")' \
-  --bind 'ctrl-o:execute(if [ -n {q} ]; then tmux new-session -d -s {q}; fi)+reload(tmux list-sessions -F "#S")+clear-query' \
+  --bind 'enter:become(tmux switch-client -t {1})' \
+  --bind 'ctrl-y:become(tmux switch-client -t {1})' \
+  --bind "ctrl-r:reload($session_command)" \
+  --bind "ctrl-x:execute(tmux kill-session -t {1})+reload($session_command)" \
+  --bind "ctrl-o:execute(if [ -n {q} ]; then tmux new-session -d -s {q}; fi)+reload($session_command)+clear-query" \
   --layout reverse \
   --cycle
