@@ -176,10 +176,22 @@ vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear highlight" })
 vim.keymap.set("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 vim.keymap.set("n", "<leader>q", "<cmd>cclose<cr>", { desc = "Close Quick list" })
 vim.keymap.set("n", "q:", "<Nop>")
+
+-- Copy current file path
 vim.keymap.set("n", "<leader>cp", function()
 	vim.fn.setreg("+", vim.fn.expand("%"))
 	print("Copied: " .. vim.fn.expand("%"))
 end, { desc = "Copy file path" })
+
+-- Open current file in browser
+vim.keymap.set("n", "<leader>ob", function()
+	local path = vim.api.nvim_buf_get_name(0)
+	if vim.bo.buftype ~= "" or vim.fn.filereadable(path) ~= 1 then
+		vim.notify("Save the buffer to a file before opening it in Chrome", vim.log.levels.WARN)
+		return
+	end
+	vim.fn.jobstart({ "open", "-a", "Google Chrome", path }, { detach = true })
+end, { desc = "Open current file in Chrome" })
 
 -- BuildIn plugins
 vim.cmd.packadd("nvim.undotree")

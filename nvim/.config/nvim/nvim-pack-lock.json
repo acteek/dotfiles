@@ -14,23 +14,23 @@
       "version": "1.0.0 - 2.0.0"
     },
     "browsher.nvim": {
-      "rev": "96a046b438ccd27d8eedc1ed7b1af2ab65b6a813",
+      "rev": "f09b445c2c9d08dcfe76a6b621161169df9bf9b5",
       "src": "git@github.com:claydugo/browsher.nvim.git"
     },
     "conform.nvim": {
-      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
+      "rev": "016802de402556da54c36bd7359b441266b01cdd",
       "src": "git@github.com:stevearc/conform.nvim.git"
     },
     "everforest-nvim": {
-      "rev": "d235ca0aa6a29546e661a020e2618612acbbffbe",
+      "rev": "a0e9edc57379e8feafc6ba207c26dbb12fc1b6d8",
       "src": "git@github.com:neanias/everforest-nvim.git"
     },
     "friendly-snippets": {
-      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
+      "rev": "7a1c9f7897a4eb078b157a04c7af81e5869215b1",
       "src": "git@github.com:rafamadriz/friendly-snippets.git"
     },
     "gitsigns.nvim": {
-      "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
+      "rev": "86a49261a2308e0e8e3d6bda1000c47b3b4b42bd",
       "src": "git@github.com:lewis6991/gitsigns.nvim.git"
     },
     "gruvbox-material": {
@@ -38,7 +38,7 @@
       "src": "git@github.com:sainnhe/gruvbox-material.git"
     },
     "gruvbox.nvim": {
-      "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
+      "rev": "48262cda6a8a921b159c8ec3e21b48ccd870b7b2",
       "src": "git@github.com:ellisonleao/gruvbox.nvim.git"
     },
     "guttermarks.nvim": {
@@ -46,7 +46,7 @@
       "src": "git@github.com:dimtion/guttermarks.nvim"
     },
     "lazygit.nvim": {
-      "rev": "a04ad0dbc725134edbee3a5eea29290976695357",
+      "rev": "8557434b285217fd0e284da252638567cebb3240",
       "src": "git@github.com:kdheepak/lazygit.nvim.git"
     },
     "lualine.nvim": {
@@ -54,7 +54,7 @@
       "src": "git@github.com:nvim-lualine/lualine.nvim.git"
     },
     "mason-lspconfig.nvim": {
-      "rev": "7adc933dabcc7c86ae6b07aff7ee68eac398491f",
+      "rev": "761d376b5fbe6b21f659432ffadc1205c660176c",
       "src": "git@github.com:williamboman/mason-lspconfig.nvim.git"
     },
     "mason.nvim": {
@@ -62,32 +62,32 @@
       "src": "git@github.com:williamboman/mason.nvim.git"
     },
     "nui.nvim": {
-      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
       "src": "git@github.com:MunifTanjim/nui.nvim.git"
     },
     "nvim-autopairs": {
-      "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
+      "rev": "3172f40c16563db871a58f20d205c710ad782311",
       "src": "git@github.com:windwp/nvim-autopairs.git"
     },
     "nvim-java": {
-      "rev": "9e8b842ea9eff3ebf25fb7360908ed4d4f87c56a",
+      "rev": "db5536b4cb3da153084e50016596fd0e3a319aae",
       "src": "git@github.com:nvim-java/nvim-java.git"
     },
     "nvim-lspconfig": {
-      "rev": "e7ca2c95ba316a8b846d3f3546d407908c5c4ccb",
+      "rev": "9691c9af52cd12c9accc6dc6d0540593c705bca8",
       "src": "git@github.com:neovim/nvim-lspconfig.git"
     },
     "nvim-treesitter": {
-      "rev": "7248feaca45e4d944591497964bc19afa89ad1c6",
+      "rev": "52773f0d13a0c11d0c3ef33c14ab6ecc1c17148b",
       "src": "git@github.com:nvim-treesitter/nvim-treesitter.git",
       "version": "'main'"
     },
     "nvim-web-devicons": {
-      "rev": "0ca28b61a04fe7426cefbdd52c2647ef0e335b5f",
+      "rev": "0dc0cfb0c6858041174a53c7aa4adaf65e994b3c",
       "src": "git@github.com:nvim-tree/nvim-web-devicons.git"
     },
     "oil.nvim": {
-      "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
+      "rev": "d3733d933833a0e59b813ecec99341527adf0c28",
       "src": "git@github.com:stevearc/oil.nvim.git"
     },
     "onedark": {
@@ -103,7 +103,7 @@
       "src": "git@github.com:nvim-lua/plenary.nvim.git"
     },
     "spring-boot.nvim": {
-      "rev": "98c6ff1dcdda943d341bba3c00ae9d190a2e5f7d",
+      "rev": "9880be48170a21d97444b1eba75853fd3bad33c3",
       "src": "git@github.com:JavaHello/spring-boot.nvim.git"
     },
     "telescope-ui-select.nvim": {
@@ -120,7 +120,7 @@
       "version": "0.2.0 - 0.3.0"
     },
     "vellum.nvim": {
-      "rev": "c9a8665c5d306bf56c6df89896fed8bfaf3110b3",
+      "rev": "4ec5d4979f7d3fb08a799a432a71b4c7feee9144",
       "src": "git@github.com:blackhat-7/vellum.nvim.git"
     }
   }
